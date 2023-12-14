@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:ames/utils/widgets/customSpirit.dart';
 import 'package:ames/utils/widgets/woman.dart';
 import 'package:ames/utils/game_manager.dart';
 import 'package:flame/components.dart';
@@ -15,37 +16,7 @@ class TestScreen extends Component with HasGameRef<GameManager> {
 
   @override
   FutureOr<void> onLoad() async {
-    final String response = await rootBundle.loadString('assets/test.json');
-    print("response : " + response);
-    data = await json.decode(response) as Map<String, dynamic>;
-    print("data : " + data.toString());
-    Map<String, dynamic> test = data["A"] as Map<String, dynamic>;
-    test.forEach((keyParent, value) {
-      print("======================" + keyParent + "======================");
-      Map<String, dynamic> test2 = value as Map<String, dynamic>;
-      if (test2["type"] == "AI") {
-        // MapEntry temp = MapEntry(
-        //         keyParent,
-        //         AnimatedImage(
-        //             test2["mainTitle"],
-        //             test2["nbImage"],
-        //             test2["loop"],
-        //             Vector2(test2["width"], test2["height"]),
-        //             test2["frameRate"]));
-        print("KEY PARENT : " + keyParent);
-        listComponent.addAll({
-          keyParent: AnimatedImage(
-              test2["mainTitle"],
-              test2["nbImage"],
-              test2["loop"],
-              Vector2(test2["width"], test2["height"]),
-              test2["frameRate"])
-        });
-        print("listComponent : " + listComponent[keyParent].toString());
-      }
-      print("==================================");
-    });
-    add(listComponent["fond"] as AnimatedImage);
+    add(CustomSpirit("fond_", Vector2(480, 320), Vector2(480, 320), const Anchor(5, 9)));
   }
 
   void tapEvent(Vector2 tapPosition) {
