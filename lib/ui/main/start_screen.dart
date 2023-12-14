@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:ames/common/widgets/textCustom.dart';
+import 'package:ames/utils/widgets/textCustom.dart';
 import 'package:ames/game_manager.dart';
 import 'package:flame/components.dart';
 

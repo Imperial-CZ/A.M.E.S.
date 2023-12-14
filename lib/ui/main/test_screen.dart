@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:ames/common/widgets/woman.dart';
+import 'package:ames/utils/widgets/woman.dart';
 import 'package:ames/game_manager.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
