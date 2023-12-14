@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:ames/utils/widgets/textCustom.dart';
 import 'package:ames/utils/widgets/woman.dart';
-import 'package:ames/game_manager.dart';
+import 'package:ames/utils/game_manager.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 
