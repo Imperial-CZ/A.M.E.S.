@@ -1,0 +1,22 @@
+{
+  "fond": {
+    "mode" : "A",
+    "delay" : 2,
+    "type": "AI",
+    "src" : "photo1",
+    "width": 480.0,
+    "height": 320.0
+  },
+  "animatedTextHeader": {
+    "mode" : "M",
+    "delay" : 2,
+    "type": "TC",
+    "textToPrint": "Bonjour, comment va ?",
+    "width": 10,
+    "height": 10
+  },
+  "fond": {
+    "mode" : "D",
+    "delay" : 2
+  }
+}
