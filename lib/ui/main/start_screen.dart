@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:ames/utils/widgets/textCustom.dart';
+import 'package:ames/utils/widgets/animatedText.dart';
 import 'package:ames/utils/game_manager.dart';
 import 'package:flame/components.dart';
 
@@ -10,7 +10,7 @@ class StartScreen extends Component with HasGameRef<GameManager> {
   @override
   FutureOr<void> onLoad() async {
     // add(background);
-    add(TextCustom("AMES is ready, press start", []));
+    add(AnimatedText("AMES is ready, press start"));
     add(SpriteComponent(
       sprite: await Sprite.load("Bed_1.png", srcSize: Vector2(300, 300)),
       size: Vector2(100, 100),

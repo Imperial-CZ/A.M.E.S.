@@ -5,9 +5,8 @@ import 'package:flame/components.dart';
 import 'package:flame/text.dart';
 import 'package:flutter/material.dart';
 
-class TextCustom extends TextComponent with HasGameRef<GameManager> {
-  String textToPrint;
-  List<String> nextText;
+class AnimatedText extends TextComponent with HasGameRef<GameManager> {
+  String allText;
   Vector2? positionInput;
   Anchor? anchorInput;
   TextRenderer? textRendererInput;
@@ -17,9 +16,8 @@ class TextCustom extends TextComponent with HasGameRef<GameManager> {
   double timeCount = 0;
   int letterToPrint = 0;
 
-  TextCustom(
-    this.textToPrint,
-    this.nextText, {
+  AnimatedText(
+    this.allText, {
     this.positionInput,
     this.anchorInput,
     this.textRendererInput,
@@ -55,24 +53,17 @@ class TextCustom extends TextComponent with HasGameRef<GameManager> {
   void update(double dt) {
     super.update(dt);
     timeCount += dt;
-    if (timeCount >= printSpeed! && letterToPrint <= textToPrint.length) {
-      if (letterToPrint == textToPrint.length) {
-        text = textToPrint.characters.getRange(0, letterToPrint).toString();
+    if (timeCount >= printSpeed! && letterToPrint <= allText.length) {
+      if (letterToPrint == allText.length) {
+        text = allText.characters.getRange(0, letterToPrint).toString();
       } else {
-        text =
-            textToPrint.characters.getRange(0, letterToPrint).toString() + "-";
+        text = allText.characters.getRange(0, letterToPrint).toString() + "-";
       }
       letterToPrint += 1;
       timeCount = 0;
-      if (letterToPrint > textToPrint.length) {
+      if (letterToPrint > allText.length) {
         isRenderFinish = true;
       }
     }
-  }
-
-  void printNextText() {
-    textToPrint = nextText[0];
-    letterToPrint = 0;
-    nextText.removeAt(0);
   }
 }
