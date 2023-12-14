@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:ames/main/intro_screen.dart';
-import 'package:ames/main/start_screen.dart';
-import 'package:ames/main/test_screen.dart';
+import 'package:ames/ui/main/intro_screen.dart';
+import 'package:ames/ui/main/start_screen.dart';
+import 'package:ames/ui/main/test_screen.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
