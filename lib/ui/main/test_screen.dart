@@ -15,10 +15,10 @@ class TestScreen extends Component with HasGameRef<GameManager> {
 
   @override
   FutureOr<void> onLoad() async {
-    final String response = await rootBundle.loadString('assets/test.json');
-    print("response : " + response);
-    data = await json.decode(response) as Map<String, dynamic>;
-    print("data : " + data.toString());
+    final String response = await rootBundle.loadString('assets/script.json');
+    //print("response : " + response);
+    //data = await json.decode(response) as Map<String, dynamic>;
+    //print("data : " + data.toString());
     Map<String, dynamic> test = data["A"] as Map<String, dynamic>;
     test.forEach((keyParent, value) {
       print("======================" + keyParent + "======================");
