@@ -1,0 +1,62 @@
+{
+  "fond": {
+    "mode": "A",
+    "delay": 2,
+    "type": "AI",
+    "src": "photo1",
+    "width": 480.0,
+    "height": 320.0
+  },
+  "animatedTextHeader": {
+    "mode": "M",
+    "delay": 2,
+    "type": "TC",
+    "textToPrint": "Bonjour, comment va ?",
+    "width": 10,
+    "height": 10
+  },
+  "fond": {
+    "mode": "D",
+    "delay": 2
+  },
+  "animatedTextHeader": {
+    "mode": "D",
+    "delay": 2
+  },
+  "animatedTextFooter": {
+    "mode": "A",
+    "delay": 2,
+    "type": "TC",
+    "textToPrint": "Vous entrez dans la zone de danger",
+    "width": 10,
+    "height": 10
+  },
+  "animatedTextFooter": {
+    "mode": "D",
+    "delay": 2
+  },
+  "animatedTextFooter2": {
+    "mode": "A",
+    "delay": 2,
+    "type": "TC",
+    "textToPrint": "Vous allez être exposé à des évènements paranormaux",
+    "width": 10,
+    "height": 10
+  },
+  "animatedTextFooter2": {
+    "mode": "D",
+    "delay": 2
+  },
+  "animatedTextFooter3": {
+    "mode": "A",
+    "delay": 2,
+    "type": "TC",
+    "textToPrint": "Tenez vous prêt",
+    "width": 10,
+    "height": 10
+  },
+  "animatedTextFooter3": {
+    "mode": "D",
+    "delay": 2
+  }
+}
