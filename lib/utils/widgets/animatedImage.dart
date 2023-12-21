@@ -4,25 +4,30 @@ import 'package:ames/utils/game_manager.dart';
 import 'package:flame/components.dart';
 
 class AnimatedImage extends SpriteComponent with HasGameRef<GameManager> {
-  String mainTitle;
+  String fileName;
   int nbImage;
   bool loop;
-  double frameRate;
   Vector2 imageSize;
+  double frameRate;
 
   int nextImage = 0;
   double timeCount = 0;
   bool isFinish = false;
 
   AnimatedImage(
-      this.mainTitle, this.nbImage, this.loop, this.imageSize, this.frameRate);
+    this.fileName,
+    this.nbImage,
+    this.loop,
+    this.imageSize,
+    this.frameRate,
+  );
 
   @override
   FutureOr<void> onLoad() async {
     await super.onLoad();
 
     sprite = await Sprite.load(
-      mainTitle + nextImage.toString() + ".png",
+      "$fileName$nextImage.png",
       srcSize: imageSize,
     );
     nextImage++;
@@ -42,7 +47,7 @@ class AnimatedImage extends SpriteComponent with HasGameRef<GameManager> {
     timeCount += dt;
     if (timeCount >= frameRate && nextImage < nbImage) {
       sprite = await Sprite.load(
-        mainTitle + nextImage.toString() + ".png",
+        "$fileName$nextImage.png",
         srcSize: imageSize,
       );
       nextImage++;

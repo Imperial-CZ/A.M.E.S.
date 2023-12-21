@@ -57,7 +57,7 @@ class AnimatedText extends TextComponent with HasGameRef<GameManager> {
       if (letterToPrint == allText.length) {
         text = allText.characters.getRange(0, letterToPrint).toString();
       } else {
-        text = allText.characters.getRange(0, letterToPrint).toString() + "-";
+        text = "${allText.characters.getRange(0, letterToPrint)}-";
       }
       letterToPrint += 1;
       timeCount = 0;
