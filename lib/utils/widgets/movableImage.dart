@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flame/components.dart';
 import '../game_manager.dart';
 
-class MovableImage extends SpriteComponent with HasGameRef<GameManager>{
+class MovableImage extends SpriteComponent with HasGameRef<GameManager> {
   String path;
   Vector2 initialCoord;
   Vector2 finalCoord;
@@ -10,14 +10,19 @@ class MovableImage extends SpriteComponent with HasGameRef<GameManager>{
   Anchor? anchorInput;
 
   //Initialisé à 1 pour éviter la division par 0, calcul dans le constructeur
-  double ratioX=1;
-  double ratioY=1;
+  double ratioX = 1;
+  double ratioY = 1;
 
-  MovableImage(this.path, this.initialCoord, this.finalCoord,this.imageSize, this.anchorInput){
-    if (position.x - finalCoord.x<position.y - finalCoord.y) {
-      ratioX = (position.x - finalCoord.x)/(position.y - finalCoord.y);
+  MovableImage(
+      {required this.path,
+      required this.initialCoord,
+      required this.finalCoord,
+      required this.imageSize,
+      this.anchorInput}) {
+    if (position.x - finalCoord.x < position.y - finalCoord.y) {
+      ratioX = (position.x - finalCoord.x) / (position.y - finalCoord.y);
     } else {
-      ratioY = (position.y - finalCoord.y)/(position.x - finalCoord.x);
+      ratioY = (position.y - finalCoord.y) / (position.x - finalCoord.x);
     }
   }
 
@@ -27,7 +32,6 @@ class MovableImage extends SpriteComponent with HasGameRef<GameManager>{
     sprite = await Sprite.load(
       "$path.png",
       srcSize: imageSize,
-
     );
     width = imageSize.x;
     height = imageSize.y;

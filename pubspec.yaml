@@ -1,10 +1,10 @@
 name: ames
 description: A new Flutter project.
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.1.5 <4.0.0'
+  sdk: ">=3.1.5 <4.0.0"
 
 dependencies:
   flame: ^1.12.0
@@ -22,3 +22,4 @@ flutter:
   assets:
     - assets/images/
     - assets/scene_1.json
+    - assets/script.json

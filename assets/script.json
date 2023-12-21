@@ -13,7 +13,20 @@
     "type": "TC",
     "textToPrint": "Bonjour, comment va ?",
     "width": 10,
-    "height": 10
+    "height": 10,
+    "x": 10,
+    "y": 10,
+    "anchor": "center",
+    "color": "#000000",
+    "fontSize": 10
+  },
+  "sprite": {
+    "image": "tamere.png",
+    "width": 100,
+    "height": 100,
+    "x": 10,
+    "y": 10,
+    "anchor": "center"
   },
   "fond": {
     "mode": "D",

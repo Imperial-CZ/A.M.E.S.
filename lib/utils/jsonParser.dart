@@ -1,4 +1,9 @@
 import 'dart:convert';
+import 'package:ames/utils/widgets/animatedImage.dart';
+import 'package:ames/utils/widgets/animatedText.dart';
+import 'package:ames/utils/widgets/movableImage.dart';
+import 'package:flame/components.dart';
+import 'package:flame/text.dart';
 import 'package:flutter/services.dart';
 
 class JsonParser {
@@ -30,11 +35,8 @@ class JsonParser {
             case 'AI':
               widget = buildAnimatedImage(map);
               break;
-            case 'IM':
-              widget = buildImage(map);
-              break;
             case 'SP':
-              widget = buildSpirit(map);
+              widget = buildSprite(map);
               break;
             case 'MI':
               widget = buildMovableImage(map);
@@ -50,33 +52,85 @@ class JsonParser {
     });
   }
 
-  String buildTextComponent(Map<String, dynamic> map) {
-    print(map);
-    return "a";
+  TextComponent buildTextComponent(Map<String, dynamic> map) {
+    return TextComponent(
+        text: map['text'],
+        position: Vector2(map['x'], map['y']),
+        anchor: parseAnchor(map['anchor']),
+        textRenderer: TextPaint(
+          style: TextStyle(
+            color: Color(map['color']),
+            fontSize: map['fontSize'], //? type : Double
+          ),
+        ));
   }
 
-  String buildAnimatedText(Map<String, dynamic> map) {
-    print(map);
-    return "a";
+  AnimatedText buildAnimatedText(Map<String, dynamic> map) {
+    return AnimatedText(
+      map['text'],
+      positionInput: Vector2(map['x'], map['y']),
+      anchorInput: parseAnchor(map['anchor']),
+      textRendererInput: TextPaint(
+        style: TextStyle(
+          color: Color(map['color']),
+          fontSize: map['fontSize'], //? type : Double
+        ),
+      ),
+    );
   }
 
-  String buildAnimatedImage(Map<String, dynamic> map) {
-    print(map);
-    return "a";
+  AnimatedImage buildAnimatedImage(Map<String, dynamic> map) {
+    return AnimatedImage(
+      map['fileName'], //? entete du nom
+      map['nbImage'], //? compteur
+      map['loop'], //? true / false => animation en boucle ou non
+      Vector2(map['width'], map['height']),
+      map['frameRate'],
+    );
   }
 
-  String buildImage(Map<String, dynamic> map) {
-    print(map);
-    return "a";
+  Future<SpriteComponent> buildSprite(Map<String, dynamic> map) async {
+    return SpriteComponent(
+        sprite: await Sprite.load(
+          map['filename'],
+          srcSize: Vector2(map['width'], map['height']),
+        ),
+        position: Vector2(map['x'], map['y']),
+        anchor: parseAnchor(map['anchor']));
   }
 
-  String buildSpirit(Map<String, dynamic> map) {
-    print(map);
-    return "a";
+  MovableImage buildMovableImage(Map<String, dynamic> map) {
+    return MovableImage(
+        path: map['filename'],
+        initialCoord: Vector2(map['xBegin'], map['yBegin']),
+        finalCoord: Vector2(map['xEnd'], map['yEnd']),
+        imageSize: Vector2(map['width'], map['end']),
+        anchorInput: parseAnchor(map['anchor']));
   }
 
-  String buildMovableImage(Map<String, dynamic> map) {
-    print(map);
-    return "a";
+  Anchor parseAnchor(String anchor) {
+    switch (anchor) {
+      case 'topLeft':
+        return Anchor.topLeft;
+      case 'topCenter':
+        return Anchor.topCenter;
+      case 'topRight':
+        return Anchor.topRight;
+      case 'centerLeft':
+        return Anchor.centerLeft;
+      case 'center':
+        return Anchor.center;
+      case 'centerRight':
+        return Anchor.centerRight;
+      case 'bottomLeft':
+        return Anchor.bottomLeft;
+      case 'bottomCenter':
+        return Anchor.bottomCenter;
+      case 'bottomRight':
+        return Anchor.bottomRight;
+      default:
+        print('Anchor is not found, default value is center');
+        return Anchor.center;
+    }
   }
 }
