@@ -14,5 +14,14 @@
     "textToPrint": "Bonjour, comment va ?",
     "width": 10,
     "height": 10
+  },
+  "fond2": {
+    "ref": "fond",
+    "mode": "M",
+    "delay": 2,
+    "type": "AI",
+    "src": "photo2",
+    "width": 480.0,
+    "height": 320.0
   }
 }

@@ -4,11 +4,13 @@ import 'package:flutter/services.dart';
 class JsonParser {
   late Map<String, dynamic> jsonMap;
   late List<String> keys;
+  late Map<String, dynamic> widgetQueue;
 
   void parse(String json) async {
     String data = await rootBundle.loadString(json);
     jsonMap = jsonDecode(data);
     keys = [];
+    dynamic widget;
 
     // Make array of keys
     jsonMap.forEach((key, value) {
@@ -20,52 +22,61 @@ class JsonParser {
         if (key == 'type') {
           switch (value) {
             case 'TC':
-              buildTextComponent(map);
+              widget = buildTextComponent(map);
               break;
             case 'AT':
-              buildAnimatedText(map);
+              widget = buildAnimatedText(map);
               break;
             case 'AI':
-              buildAnimatedImage(map);
+              widget = buildAnimatedImage(map);
               break;
             case 'IM':
-              buildImage(map);
+              widget = buildImage(map);
               break;
             case 'SP':
-              buildSpirit(map);
+              widget = buildSpirit(map);
               break;
             case 'MI':
-              buildMovableImage(map);
+              widget = buildMovableImage(map);
               break;
             default:
               print('No type found');
+          }
+          if (widget != null) {
+            widgetQueue.addAll({element: widget});
           }
         }
       });
     });
   }
 
-  void buildTextComponent(Map<String, dynamic> map) {
+  String buildTextComponent(Map<String, dynamic> map) {
     print(map);
+    return "a";
   }
 
-  void buildAnimatedText(Map<String, dynamic> map) {
+  String buildAnimatedText(Map<String, dynamic> map) {
     print(map);
+    return "a";
   }
 
-  void buildAnimatedImage(Map<String, dynamic> map) {
+  String buildAnimatedImage(Map<String, dynamic> map) {
     print(map);
+    return "a";
   }
 
-  void buildImage(Map<String, dynamic> map) {
+  String buildImage(Map<String, dynamic> map) {
     print(map);
+    return "a";
   }
 
-  void buildSpirit(Map<String, dynamic> map) {
+  String buildSpirit(Map<String, dynamic> map) {
     print(map);
+    return "a";
   }
 
-  void buildMovableImage(Map<String, dynamic> map) {
+  String buildMovableImage(Map<String, dynamic> map) {
     print(map);
+    return "a";
   }
 }
