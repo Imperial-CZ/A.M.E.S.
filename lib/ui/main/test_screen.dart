@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:ames/utils/widgets/customSpirit.dart';
-import 'package:ames/utils/widgets/woman.dart';
+import 'package:ames/utils/widgets/animatedImage.dart';
 import 'package:ames/utils/game_manager.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
@@ -16,7 +16,7 @@ class TestScreen extends Component with HasGameRef<GameManager> {
 
   @override
   FutureOr<void> onLoad() async {
-    add(CustomSpirit("fond_", Vector2(480, 320), Vector2(480, 320), const Anchor(5, 9)));
+    add(CustomSpirit("fond_1", Vector2(32, 320), Vector2(480, 320), null));
   }
 
   void tapEvent(Vector2 tapPosition) {

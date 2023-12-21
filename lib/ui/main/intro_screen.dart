@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:ames/utils/widgets/animatedText.dart';
-import 'package:ames/utils/widgets/woman.dart';
+import 'package:ames/utils/widgets/animatedImage.dart';
 import 'package:ames/utils/game_manager.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
