@@ -8,18 +8,21 @@ class AnimatedImage extends SpriteComponent with HasGameRef<GameManager> {
   int nbImage;
   bool loop;
   Vector2 imageSize;
+  Vector2 coord;
   double frameRate;
 
   int nextImage = 0;
   double timeCount = 0;
   bool isFinish = false;
 
-  AnimatedImage(
-    this.fileName,
-    this.nbImage,
-    this.loop,
-    this.imageSize,
-    this.frameRate,
+  AnimatedImage({
+    required this.fileName,
+    required this.nbImage,
+    required this.loop,
+    required this.imageSize,
+    required this.frameRate,
+    required this.coord,
+  }
   );
 
   @override
@@ -29,15 +32,12 @@ class AnimatedImage extends SpriteComponent with HasGameRef<GameManager> {
     sprite = await Sprite.load(
       "$fileName$nextImage.png",
       srcSize: imageSize,
+      srcPosition: coord,
     );
     nextImage++;
 
-    double x = (gameRef.size.toRect().width / 2).toDouble();
-    double y = (gameRef.size.toRect().height / 2).toDouble();
-
     width = imageSize[0];
     height = imageSize[1];
-    position = Vector2(x, y);
     anchor = Anchor.center;
   }
 
@@ -49,6 +49,7 @@ class AnimatedImage extends SpriteComponent with HasGameRef<GameManager> {
       sprite = await Sprite.load(
         "$fileName$nextImage.png",
         srcSize: imageSize,
+        srcPosition: coord,
       );
       nextImage++;
       timeCount = 0;

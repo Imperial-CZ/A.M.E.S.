@@ -7,7 +7,7 @@ import 'package:flame/src/gestures/events.dart';
 
 class GameManager extends FlameGame with TapDetector {
   Map<String, dynamic> listComponent = {
-    "background": AnimatedImage("fond_", 47, true, Vector2(480, 320), 0.5),
+    "background": AnimatedImage(fileName: "fond_", nbImage: 47, loop:  true, imageSize: Vector2(480, 320), coord: Vector2(200,200), frameRate: 0.5),
   };
 
   @override
