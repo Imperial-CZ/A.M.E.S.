@@ -9,8 +9,8 @@
     "y": 0.5,
     "framerate": 0.0,
     "duration": 1,
-    "width": 0.2,
-    "height": 0.2
+    "widht" : 150,
+    "height" : 92
   },
   "imageBoot": {
     "type": "AI",
@@ -21,7 +21,9 @@
     "x": 0.5,
     "y": 0.5,
     "framerate": 0.0,
-    "duration": 2
+    "duration": 2,
+    "widht" : 480,
+    "height" : 320
   },
   "animationFond": {
     "type": "AI",
@@ -32,7 +34,9 @@
     "x": 0.5,
     "y": 0.5,
     "framerate": 0.0,
-    "duration": 16
+    "duration": 16,
+    "widht" : 480,
+    "height" : 320
   },
   "introText1": {
     "type": "AT",
