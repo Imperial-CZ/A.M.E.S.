@@ -81,7 +81,7 @@ class JsonParser {
 
   AnimatedImage buildAnimatedImage(Map<String, dynamic> map) {
     return AnimatedImage(
-      fileName: map['fileName'], //? entete du nom
+      fileName: map['filename'], //? entete du nom
       nbImage: map['nbImage'], //? compteur
       loop: map['loop'], //? true / false => animation en boucle ou non
       imageSize: Vector2(map['width'], map['height']),
