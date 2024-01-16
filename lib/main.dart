@@ -1,3 +1,4 @@
+import 'package:ames/ui/game/game_screen.dart';
 import 'package:ames/utils/game_manager.dart';
 import 'package:ames/utils/jsonParser.dart';
 import 'package:flame/flame.dart';
@@ -9,8 +10,6 @@ void main() {
 
   Flame.device.fullScreen();
   Flame.device.setLandscape();
-  JsonParser jsonParser = JsonParser();
-  jsonParser.parse('assets/script.json');
   runApp(const MyApp());
 }
 
@@ -22,9 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Ames",
       debugShowCheckedModeBanner: false,
-      home: GameWidget(
-        game: GameManager(),
-      ),
+      home: GameScreen(),
     );
   }
 }

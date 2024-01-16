@@ -4,23 +4,23 @@ import 'package:ames/utils/game_manager.dart';
 import 'package:flame/components.dart';
 
 class AnimatedImage extends SpriteComponent with HasGameRef<GameManager> {
-  String filename;
+  String fileName;
   int nbImage;
   bool loop;
   Vector2 imageSize;
   Vector2 coord;
-  double framerate;
+  double frameRate;
 
   int nextImage = 0;
   double timeCount = 0;
   bool isFinish = false;
 
   AnimatedImage({
-    required this.filename,
+    required this.fileName,
     required this.nbImage,
     required this.loop,
     required this.imageSize,
-    required this.framerate,
+    required this.frameRate,
     required this.coord,
   });
 
@@ -29,7 +29,7 @@ class AnimatedImage extends SpriteComponent with HasGameRef<GameManager> {
     await super.onLoad();
 
     sprite = await Sprite.load(
-      "$filename$nextImage.png",
+      "$fileName$nextImage.png",
       srcSize: imageSize,
       srcPosition: coord,
     );
@@ -44,15 +44,15 @@ class AnimatedImage extends SpriteComponent with HasGameRef<GameManager> {
   void update(double dt) async {
     super.update(dt);
     timeCount += dt;
-    if (timeCount >= framerate && nextImage < nbImage) {
+    if (timeCount >= frameRate && nextImage < nbImage) {
       sprite = await Sprite.load(
-        "$filename$nextImage.png",
+        "$fileName$nextImage.png",
         srcSize: imageSize,
         srcPosition: coord,
       );
       nextImage++;
       timeCount = 0;
-    } else if (timeCount >= framerate && nextImage >= nbImage) {
+    } else if (timeCount >= frameRate && nextImage >= nbImage) {
       if (loop = false) {
         removeFromParent();
       } else {

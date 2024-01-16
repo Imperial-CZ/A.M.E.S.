@@ -1,29 +1,27 @@
 {
   "startButton": {
-    "type": "AI",
-    "filename": "assets/start.png",
-    "nbImage": 1,
-    "loop": false,
-    "size": 0,
-    "x": 0.5,
-    "y": 0.5,
-    "framerate": 0.0,
-    "duration": 1,
-    "widht" : 150,
-    "height" : 92
+    "type": "SP",
+    "filename": "start",
+    "x": 150.0,
+    "y": 92.0,
+    "width": 150.0,
+    "height": 92.0,
+    "anchor": "",
+    "duration": 5
+  },
+  "waiting1": {
+    "type": "WA",
+    "duration": 10
   },
   "imageBoot": {
-    "type": "AI",
-    "filename": "assets/imageBoot.png",
-    "nbImage": 1,
-    "loop": false,
-    "size": 0,
-    "x": 0.5,
-    "y": 0.5,
-    "framerate": 0.0,
-    "duration": 2,
-    "widht" : 480,
-    "height" : 320
+    "type": "SP",
+    "filename": "imageBoot",
+    "x": 480.0,
+    "y": 320.0,
+    "width": 480.0,
+    "height": 320.0,
+    "anchor": "",
+    "duration": 10
   },
   "animationFond": {
     "type": "AI",
@@ -31,56 +29,44 @@
     "nbImage": 47,
     "loop": false,
     "size": 0,
-    "x": 0.5,
-    "y": 0.5,
+    "x": 480.0,
+    "y": 320.0,
     "framerate": 0.0,
     "duration": 16,
-    "widht" : 480,
-    "height" : 320
+    "width": 480.0,
+    "height": 320.0
   },
   "introText1": {
     "type": "AT",
     "text": "Bonjour chers utilisateurs de l’A M E S (Amplificateur Mediumnique Extrasensoriel) Version trois point zéro. Vous avez été sélectionné par l’Agence  pour notre programme de recherche sur le potentiel médiumnique de la population.  Vous allez être exposé à des évènements paranormaux.    Tapez pour continuer.",
-    "position": {
-      "x": 0,
-      "y": 0
-    },
-    "textRenderer": {
-      "style": {
-        "fontSize": 20,
-        "color": "#FFFFFF"
-      }
-    },
-    "duration": 0
+    "x": 0.0,
+    "y": 0.0,
+    "fontSize": 20.0,
+    "color": "0xFFFFFF",
+    "duration": 0,
+    "anchor": "",
+    "printSpeed": 0.05
   },
   "introText2": {
     "type": "AT",
     "text": "Bonjour chers utilisateurs de l’A M E S (Amplificateur Mediumnique Extrasensoriel) Version trois point zéro. Vous avez été sélectionné par l’Agence  pour notre programme de recherche sur le potentiel médiumnique de la population.  Vous allez être exposé à des évènements paranormaux.    Tapez pour continuer.",
-    "position": {
-      "x": 0,
-      "y": 0
-    },
-    "textRenderer": {
-      "style": {
-        "fontSize": 20,
-        "color": "#FFFFFF"
-      }
-    },
-    "duration": 0
+    "x": 0.0,
+    "y": 0.0,
+    "fontSize": 20.0,
+    "color": "0xFFFFFF",
+    "duration": 0,
+    "anchor": "",
+    "printSpeed": 0.05
   },
   "introText3": {
     "type": "AT",
     "text": "Nous allons maintenant procéder à quelques étapes préparatoires pour le test. Veuillez répondre aux questions suivantes. Confirmez vous que vous êtes bien à votre domicile ?",
-    "position": {
-      "x": 0,
-      "y": 0
-    },
-    "textRenderer": {
-      "style": {
-        "fontSize": 20,
-        "color": "#FFFFFF"
-      }
-    },
-    "duration": 5
+    "x": 0.0,
+    "y": 0.0,
+    "fontSize": 20.0,
+    "color": "0xFFFFFF",
+    "duration": 5,
+    "anchor": "",
+    "printSpeed": 0.05
   }
 }

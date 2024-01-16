@@ -1,6 +1,9 @@
 import 'dart:convert';
+import 'dart:ffi';
+import 'package:ames/utils/waiting.dart';
 import 'package:ames/utils/widgets/animatedImage.dart';
 import 'package:ames/utils/widgets/animatedText.dart';
+import 'package:ames/utils/widgets/customSpirit.dart';
 import 'package:ames/utils/widgets/movableImage.dart';
 import 'package:flame/components.dart';
 import 'package:flame/text.dart';
@@ -9,9 +12,9 @@ import 'package:flutter/services.dart';
 class JsonParser {
   late Map<String, dynamic> jsonMap;
   late List<String> keys;
-  late Map<String, dynamic> widgetQueue;
+  late Map<String, dynamic> widgetQueue = {};
 
-  void parse(String json) async {
+  Future<void> parse(String json) async {
     String data = await rootBundle.loadString(json);
     jsonMap = jsonDecode(data);
     keys = [];
@@ -23,7 +26,7 @@ class JsonParser {
     });
     keys.forEach((element) {
       Map<String, dynamic> map = jsonMap[element];
-      map.forEach((key, value) {
+      map.forEach((key, value) async {
         if (key == 'type') {
           switch (value) {
             case 'TC':
@@ -36,11 +39,13 @@ class JsonParser {
               widget = buildAnimatedImage(map);
               break;
             case 'SP':
-              widget = buildSprite(map);
+              widget = await buildSprite(map);
               break;
             case 'MI':
               widget = buildMovableImage(map);
               break;
+            case 'WA':
+              widget = Waiting(duration: map["duration"]);
             default:
               print('No type found');
           }
@@ -72,32 +77,33 @@ class JsonParser {
       anchorInput: parseAnchor(map['anchor']),
       textRendererInput: TextPaint(
         style: TextStyle(
-          color: Color(map['color']),
+          color: Color(int.parse(map['color'])),
           fontSize: map['fontSize'], //? type : Double
         ),
       ),
+      printSpeed: map["printSpeed"],
     );
   }
 
   AnimatedImage buildAnimatedImage(Map<String, dynamic> map) {
     return AnimatedImage(
-      filename: map['filename'], //? entete du nom
+      fileName: map['filename'], //? entete du nom
       nbImage: map['nbImage'], //? compteur
       loop: map['loop'], //? true / false => animation en boucle ou non
       imageSize: Vector2(map['width'], map['height']),
       coord: Vector2(map['x'], map['y']),
-      framerate: map['frameRate'],
+      frameRate: map['framerate'],
     );
   }
 
-  Future<SpriteComponent> buildSprite(Map<String, dynamic> map) async {
-    return SpriteComponent(
-        sprite: await Sprite.load(
-          map['filename'],
-          srcSize: Vector2(map['width'], map['height']),
-        ),
-        position: Vector2(map['x'], map['y']),
-        anchor: parseAnchor(map['anchor']));
+  Future<CustomSpirit> buildSprite(Map<String, dynamic> map) async {
+    return CustomSpirit(
+      path: map['filename'],
+      coord: Vector2(map['x'], map['y']),
+      imageSize: Vector2(map['width'], map['height']),
+      anchorInput: parseAnchor(map['anchor']),
+      duration: map['duration'],
+    );
   }
 
   MovableImage buildMovableImage(Map<String, dynamic> map) {
