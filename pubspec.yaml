@@ -1,14 +1,17 @@
 name: ames
 description: A new Flutter project.
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.1.5 <4.0.0'
+  sdk: ">=3.1.5 <4.0.0"
 
 dependencies:
+  camera: ^0.10.5+9
+  flame: ^1.12.0
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.3
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +20,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/scene_1.json
+    - assets/script.json
