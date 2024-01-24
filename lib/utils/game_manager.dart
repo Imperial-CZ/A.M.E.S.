@@ -32,22 +32,15 @@ class GameManager extends FlameGame with TapDetector {
   @override
   FutureOr<void> onLoad() async {
     jsonParser.widgetQueue.keys.forEach((element) async {
-      print("PASSAGE : " + element);
       if (jsonParser.widgetQueue[element] is Waiting) {
-        print("IT'S A WAITING");
         await Future.delayed(
           Duration(
             seconds: (jsonParser.widgetQueue[element] as Waiting).duration,
           ),
         );
-        print("END WAITING");
       } else {
+        print("VALUE : " + jsonParser.widgetQueue[element].toString());
         add(jsonParser.widgetQueue[element] as Component);
-        if (jsonParser.widgetQueue[element] is CustomSpirit) {
-          print("IT'S A CUSTOMSPIRIT");
-          waitingToDelete(element,
-              (jsonParser.widgetQueue[element] as CustomSpirit).duration);
-        }
       }
     });
   }
