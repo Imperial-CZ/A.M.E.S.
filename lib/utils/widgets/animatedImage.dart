@@ -30,13 +30,19 @@ class AnimatedImage extends SpriteComponent with HasGameRef<GameManager> {
 
     sprite = await Sprite.load(
       "$fileName$nextImage.png",
-      srcSize: imageSize,
-      srcPosition: coord,
+      srcSize: Vector2(
+        (gameRef.size.toRect().width / 2).toDouble(),
+        (gameRef.size.toRect().height / 2).toDouble(),
+      ),
     );
     nextImage++;
 
-    width = imageSize[0];
-    height = imageSize[1];
+    position = Vector2(
+      (gameRef.size.toRect().width / 2).toDouble(),
+      (gameRef.size.toRect().height / 2).toDouble(),
+    );
+    width = 480;
+    height = 320;
     anchor = Anchor.center;
   }
 
@@ -44,11 +50,19 @@ class AnimatedImage extends SpriteComponent with HasGameRef<GameManager> {
   void update(double dt) async {
     super.update(dt);
     timeCount += dt;
+    print("timeCount : " +
+        timeCount.toString() +
+        " frameRate : " +
+        frameRate.toString() +
+        " nbImage : " +
+        nbImage.toString() +
+        " nextImage : " +
+        nextImage.toString());
     if (timeCount >= frameRate && nextImage < nbImage) {
+      print("nextImage : " + nextImage.toString());
       sprite = await Sprite.load(
         "$fileName$nextImage.png",
         srcSize: imageSize,
-        srcPosition: coord,
       );
       nextImage++;
       timeCount = 0;

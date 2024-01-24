@@ -6,8 +6,7 @@
     "y": 92.0,
     "width": 150.0,
     "height": 92.0,
-    "anchor": "",
-    "duration": 5
+    "anchor": ""
   },
   "waiting1": {
     "type": "WA",
@@ -20,18 +19,16 @@
     "y": 320.0,
     "width": 480.0,
     "height": 320.0,
-    "anchor": "",
-    "duration": 10
+    "anchor": ""
   },
   "animationFond": {
     "type": "AI",
     "filename": "fond_",
     "nbImage": 47,
-    "loop": false,
-    "size": 0,
-    "x": 480.0,
-    "y": 320.0,
-    "framerate": 0.0,
+    "loop": true,
+    "x": -500.0,
+    "y": -500.0,
+    "framerate": 1.0,
     "duration": 16,
     "width": 480.0,
     "height": 320.0
