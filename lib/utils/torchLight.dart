@@ -13,7 +13,7 @@ class TorchLightManager {
 
   Future<void> disableTorch() async {
     try {
-      await TorchLight.enableTorch();
+      await TorchLight.disableTorch();
     } on Exception catch (_) {
       print('Could not enable Flashlight');
     }

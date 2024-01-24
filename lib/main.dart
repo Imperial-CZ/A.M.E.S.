@@ -1,4 +1,5 @@
 import 'package:ames/ui/game/game_screen.dart';
+import 'package:ames/ui/game/test_screen.dart';
 import 'package:ames/utils/game_manager.dart';
 import 'package:ames/utils/jsonParser.dart';
 import 'package:flame/flame.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Ames",
       debugShowCheckedModeBanner: false,
-      home: GameScreen(),
+      home: TestScreen(),
     );
   }
 }
