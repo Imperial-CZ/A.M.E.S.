@@ -7,6 +7,7 @@ import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flame/src/gestures/events.dart';
+import 'package:flutter/services.dart';
 
 class GameManager extends FlameGame with TapDetector {
   Map<String, dynamic> listComponent = {
@@ -15,6 +16,7 @@ class GameManager extends FlameGame with TapDetector {
         nbImage: 47,
         loop: true,
         imageSize: Vector2(480, 320),
+        sizeMultiplicator: 1.0,
         coord: Vector2(200, 200),
         frameRate: 0.5),
   };
@@ -22,12 +24,15 @@ class GameManager extends FlameGame with TapDetector {
   GameManager({required this.jsonParser});
 
   JsonParser jsonParser;
+  Function()? tapEventFunction;
 
   Future<void> waitingToDelete(String elementName, int duration) async {
     print("DELAYED");
     await Future.delayed(Duration(seconds: duration));
     remove(jsonParser.widgetQueue[elementName]);
   }
+
+  void continueDraw() {}
 
   @override
   FutureOr<void> onLoad() async {
@@ -38,6 +43,7 @@ class GameManager extends FlameGame with TapDetector {
             seconds: (jsonParser.widgetQueue[element] as Waiting).duration,
           ),
         );
+      } else if (jsonParser.widgetQueue[element] is Function()) {
       } else {
         print("VALUE : " + jsonParser.widgetQueue[element].toString());
         add(jsonParser.widgetQueue[element] as Component);

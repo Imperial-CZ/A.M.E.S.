@@ -90,7 +90,8 @@ class JsonParser {
       fileName: map['filename'], //? entete du nom
       nbImage: map['nbImage'], //? compteur
       loop: map['loop'], //? true / false => animation en boucle ou non
-      imageSize: Vector2(map['width'] * 2, map['height'] * 2),
+      imageSize: Vector2(map['imageWidth'], map['imageHeight']),
+      sizeMultiplicator: map["sizeMultiplicator"],
       coord: Vector2(map['x'], map['y']),
       frameRate: map['framerate'],
     );
