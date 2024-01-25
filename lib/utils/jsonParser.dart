@@ -94,7 +94,7 @@ class JsonParser {
       sizeMultiplicator: map["sizeMultiplicator"],
       coord: Vector2(map['x'], map['y']),
       frameRate: map['framerate'],
-      activateCallback: map['activateCallback'],
+      activateCallback: map['isTapable'],
     );
   }
 
@@ -104,7 +104,7 @@ class JsonParser {
       coord: Vector2(map['x'], map['y']),
       imageSize: Vector2(map['width'], map['height']),
       anchorInput: parseAnchor(map['anchor']),
-      activateCallback: map['activateCallback'],
+      activateCallback: map['isTapable'],
     );
   }
 
