@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:ames/utils/game_manager.dart';
 import 'package:flame/components.dart';
+import 'package:flame/events.dart';
 
-class AnimatedImage extends SpriteComponent with HasGameRef<GameManager> {
+class AnimatedImage extends SpriteComponent
+    with HasGameRef<GameManager>, TapCallbacks {
   String fileName;
   int nbImage;
   bool loop;
@@ -11,6 +13,7 @@ class AnimatedImage extends SpriteComponent with HasGameRef<GameManager> {
   double sizeMultiplicator;
   Vector2 coord;
   double frameRate;
+  bool activateCallback;
 
   int nextImage = 0;
   double timeCount = 0;
@@ -24,6 +27,7 @@ class AnimatedImage extends SpriteComponent with HasGameRef<GameManager> {
     required this.sizeMultiplicator,
     required this.frameRate,
     required this.coord,
+    required this.activateCallback,
   });
 
   @override
@@ -45,6 +49,13 @@ class AnimatedImage extends SpriteComponent with HasGameRef<GameManager> {
     height = imageSize[1] * sizeMultiplicator;
     position = Vector2(x, y);
     anchor = Anchor.center;
+  }
+
+  @override
+  void onTapDown(TapDownEvent event) {
+    if (activateCallback == true) {
+      print("TAP ON ANIMATED");
+    }
   }
 
   @override
