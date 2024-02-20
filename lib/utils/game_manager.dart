@@ -8,7 +8,6 @@ import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flame/src/gestures/events.dart';
-import 'package:flutter/services.dart';
 
 class GameManager extends FlameGame with TapDetector {
   // Map<String, dynamic> listComponent = {
@@ -35,6 +34,17 @@ class GameManager extends FlameGame with TapDetector {
     remove(jsonParser.widgetQueue[elementName]);
   }
 
+  void removeAllComponent() {
+    for (int i = 0; i != currentPosition; i++) {
+      if (jsonParser.widgetQueue.values.elementAt(i) is Component) {
+        print("i : " +
+            i.toString() +
+            " Value : " +
+            jsonParser.widgetQueue.keys.elementAt(i));
+      }
+    }
+  }
+
   void continueDraw() async {
     for (currentPosition;
         currentPosition != jsonParser.widgetQueue.keys.length;
@@ -48,12 +58,14 @@ class GameManager extends FlameGame with TapDetector {
           ),
         );
       } else if (element is CustomSpirit || element is AnimatedImage) {
-        if (element is CustomSpirit) {
-          // Stream stream;
-          // stream.listen((event) { })
-          // element.
-        }
-        element.add(element as Component);
+        // if (element is CustomSpirit) {
+        //   // Stream stream;
+        //   // stream.listen((event) { })
+        //   // element.
+        // }
+        // element.add(element as Component);
+        print("VALUE : " + element.toString());
+        add(element as Component);
       } else {
         print("VALUE : " + element.toString());
         add(element as Component);
@@ -63,12 +75,14 @@ class GameManager extends FlameGame with TapDetector {
 
   @override
   FutureOr<void> onLoad() async {
+    print("KEYS 2 : " + jsonParser.widgetQueue.keys.toString());
     continueDraw();
   }
 
   @override
   void onTapDown(TapDownInfo info) {
     super.onTapDown(info);
+    removeAllComponent();
     // if (gamemode.currentGameMode!(info) == true) {
     //   continueDraw();
     // }
