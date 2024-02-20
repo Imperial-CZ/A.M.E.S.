@@ -16,6 +16,8 @@ class CustomSpirit extends SpriteComponent
 
   bool activateCallback;
 
+  Stream<bool> trigger = Stream.value(false);
+
   CustomSpirit({
     required this.path,
     required this.coord,
@@ -39,6 +41,9 @@ class CustomSpirit extends SpriteComponent
 
   @override
   void onTapDown(TapDownEvent event) {
-    print("TA MERE EN STRING");
+    if (activateCallback == true) {
+      trigger.;
+      print("Custom Spirit tap down");
+    }
   }
 }
