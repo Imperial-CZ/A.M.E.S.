@@ -39,10 +39,19 @@ class JsonParser {
               widget = buildAnimatedImage(map);
               break;
             case 'SP':
-              widget = await buildSprite(map);
+              widget = buildSprite(map);
               break;
             case 'MI':
               widget = buildMovableImage(map);
+              break;
+            case 'GM':
+              widget = buildGameplay(map);
+              break;
+            case 'RMA':
+              widget = buildRemoveAll(map);
+              break;
+            case 'RM':
+              widget = buildRemove(map);
               break;
             case 'WA':
               widget = Waiting(duration: map["duration"]);
@@ -98,7 +107,7 @@ class JsonParser {
     );
   }
 
-  Future<CustomSpirit> buildSprite(Map<String, dynamic> map) async {
+  CustomSpirit buildSprite(Map<String, dynamic> map) {
     return CustomSpirit(
       path: map['filename'],
       coord: Vector2(map['x'], map['y']),
@@ -115,6 +124,21 @@ class JsonParser {
         finalCoord: Vector2(map['xEnd'], map['yEnd']),
         imageSize: Vector2(map['width'], map['end']),
         anchorInput: parseAnchor(map['anchor']));
+  }
+
+  Gameplay buildGameplay(Map<String, dynamic> map) {
+    return Gameplay(
+      name: map['name'],
+      stopRead: map['stopRead'],
+    );
+  }
+
+  RemoveAll buildRemoveAll(Map<String, dynamic> map) {
+    return RemoveAll();
+  }
+
+  Remove buildRemove(Map<String, dynamic> map) {
+    return Remove(map['name']);
   }
 
   Anchor parseAnchor(String anchor) {
