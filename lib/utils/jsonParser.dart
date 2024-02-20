@@ -6,6 +6,8 @@ import 'package:ames/utils/widgets/animatedImage.dart';
 import 'package:ames/utils/widgets/animatedText.dart';
 import 'package:ames/utils/widgets/customSpirit.dart';
 import 'package:ames/utils/widgets/movableImage.dart';
+import 'package:ames/utils/widgets/remove.dart';
+import 'package:ames/utils/widgets/removeAll.dart';
 import 'package:flame/components.dart';
 import 'package:flame/text.dart';
 import 'package:flutter/services.dart';
@@ -139,7 +141,7 @@ class JsonParser {
   }
 
   Remove buildRemove(Map<String, dynamic> map) {
-    return Remove(map['name']);
+    return Remove(name: map['name']);
   }
 
   Anchor parseAnchor(String anchor) {
