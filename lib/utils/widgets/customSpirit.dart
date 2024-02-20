@@ -42,7 +42,7 @@ class CustomSpirit extends SpriteComponent
   @override
   void onTapDown(TapDownEvent event) {
     if (activateCallback == true) {
-      trigger.;
+      // trigger.;
       print("Custom Spirit tap down");
     }
   }

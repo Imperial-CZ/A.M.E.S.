@@ -48,13 +48,12 @@ class GameManager extends FlameGame with TapDetector {
           ),
         );
       } else if (element is CustomSpirit || element is AnimatedImage) {
-        if(element is CustomSpirit){
-          Stream stream;
-          stream.listen((event) { })
-          element.
+        if (element is CustomSpirit) {
+          // Stream stream;
+          // stream.listen((event) { })
+          // element.
         }
-        element.
-        add(element as Component);
+        element.add(element as Component);
       } else {
         print("VALUE : " + element.toString());
         add(element as Component);
