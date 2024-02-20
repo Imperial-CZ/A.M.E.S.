@@ -44,20 +44,75 @@
     "anchor": "",
     "printSpeed": 0.05
   },
-  "introText2": {
+  "gameplayintro1": {
+    "name": "example",
+    "stopRead": true
+  },
+  "introText3": {
     "type": "AT",
-    "text": "Bonjour chers utilisateurs de l’A M E S (Amplificateur Mediumnique Extrasensoriel) Version trois point zéro. Vous avez été sélectionné par l’Agence  pour notre programme de recherche sur le potentiel médiumnique de la population.  Vous allez être exposé à des évènements paranormaux.    Tapez pour continuer.",
+    "text": "Le programme A M E S que vous venez d'installer transforme votre téléphone en véritable antenne à Aura. Si votre sensibilité médiumnique est assez élevée, l'Agence vous recontactera pour plus amples informations et de nouvelles consignes.   Tapez pour continuer.",
     "x": 0.0,
     "y": 0.0,
     "fontSize": 20.0,
     "color": "0xFFFFFF",
-    "duration": 0,
+    "duration": 5,
     "anchor": "",
     "printSpeed": 0.05
   },
-  "introText3": {
+  "gameplayintro2": {
+    "name": "example",
+    "stopRead": true
+  },
+  "introText4": {
     "type": "AT",
     "text": "Nous allons maintenant procéder à quelques étapes préparatoires pour le test. Veuillez répondre aux questions suivantes. Confirmez vous que vous êtes bien à votre domicile ?",
+    "x": 0.0,
+    "y": 0.0,
+    "fontSize": 20.0,
+    "color": "0xFFFFFF",
+    "duration": 5,
+    "anchor": "",
+    "printSpeed": 0.05
+  },
+  "ButtonYes": {
+    "type": "SP",
+    "filename": "yes",
+    "x": 150.0,
+    "y": 92.0,
+    "width": 150.0,
+    "height": 92.0,
+    "anchor": ""
+  },
+  "ButtonNo": {
+    "type": "SP",
+    "filename": "no",
+    "x": 150.0,
+    "y": 92.0,
+    "width": 150.0,
+    "height": 92.0,
+    "anchor": ""
+  },
+  "gameplayintro3": {
+    "name": "example",
+    "stopRead": true
+  },
+  "gameplayclear1": {
+    "name": "example",
+    "clear": "",
+    "clearAll": true
+  },
+  "gameOver1": {
+    "type": "SP",
+    "filename": "gameOver",
+    "x": 150.0,
+    "y": 92.0,
+    "width": 150.0,
+    "height": 92.0,
+    "anchor": ""
+  },
+  "introText5": {
+    "type": "AT",
+    "text": "Merci. Le test que vous allez subir ne doit pas être interrompu. Pouvez-vous également confirmer que vous avez une dizaine de minutes devant vous ?",
     "x": 0.0,
     "y": 0.0,
     "fontSize": 20.0,
