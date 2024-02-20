@@ -72,5 +72,17 @@
     "anchor": "",
     "printSpeed": 0.05,
     "isTapable": false
+  },
+  "gameplayintro1": {
+    "type": "GM",
+    "name": "example",
+    "stopRead": true
+  },
+  "removeAll": {
+    "type": "RMA"
+  },
+  "remove1": {
+    "type": "RM",
+    "name": "NomDuComponentASupp"
   }
 }
