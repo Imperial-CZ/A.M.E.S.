@@ -59,6 +59,12 @@ class JsonParser {
               break;
             case 'SO':
               widget = buildSound(map);
+            case 'CH':
+              widget = checkHeadphone(map);
+            case 'CL':
+              widget = checkLight(map);
+            case 'SO':
+              widget = buildSound(map);
               break;
             case 'WA':
               widget = Waiting(duration: map["duration"]);
@@ -155,6 +161,10 @@ class JsonParser {
         loop: map['loop'],
         volume: map['volume']);
   }
+
+  checkHeadphone(Map<String, dynamic> map) {}
+
+  checkLight(Map<String, dynamic> map) {}
 
   Anchor parseAnchor(String anchor) {
     switch (anchor) {
