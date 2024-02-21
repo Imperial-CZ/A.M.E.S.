@@ -45,6 +45,7 @@
     "printSpeed": 0.05
   },
   "gameplayintro1": {
+    "type": "SR",
     "name": "example",
     "stopRead": true
   },
@@ -60,6 +61,7 @@
     "printSpeed": 0.05
   },
   "gameplayintro2": {
+    "type": "SR",
     "name": "example",
     "stopRead": true
   },
@@ -93,10 +95,12 @@
     "anchor": ""
   },
   "gameplayintro3": {
+    "type": "SR",
     "name": "example",
     "stopRead": true
   },
   "gameplayclear1": {
+    "type": "CE",
     "name": "example",
     "clear": "",
     "clearAll": true
@@ -120,5 +124,202 @@
     "duration": 5,
     "anchor": "",
     "printSpeed": 0.05
+  },
+  "ButtonYes2": {
+    "type": "SP",
+    "filename": "yes",
+    "x": 150.0,
+    "y": 92.0,
+    "width": 150.0,
+    "height": 92.0,
+    "anchor": ""
+  },
+  "ButtonNo2": {
+    "type": "SP",
+    "filename": "no",
+    "x": 150.0,
+    "y": 92.0,
+    "width": 150.0,
+    "height": 92.0,
+    "anchor": ""
+  },
+  "gameplayintro4": {
+    "type": "SR",
+    "name": "example",
+    "stopRead": true
+  },
+  "gameplayclear2": {
+    "type": "CE",
+    "name": "example",
+    "clear": "",
+    "clearAll": true
+  },
+  "introText6": {
+    "type": "AT",
+    "text": "Merci. Si vous acceptez de participer à ce test et acceptez les conditions précédemment définies, veuillez appliquer votre pouce sur le lecteur qui apparait à l’écran. Votre empreinte digitale fera office de signature.",
+    "x": 0.0,
+    "y": 0.0,
+    "fontSize": 20.0,
+    "color": "0xFFFFFF",
+    "duration": 5,
+    "anchor": "",
+    "printSpeed": 0.05
+  },
+  "scanButton": {
+    "type": "SP",
+    "filename": "scanButton",
+    "x": 150.0,
+    "y": 92.0,
+    "width": 150.0,
+    "height": 92.0,
+    "anchor": ""
+  },
+  "fingerprint": {
+    "type": "SP",
+    "filename": "fingerPrint",
+    "x": 150.0,
+    "y": 92.0,
+    "width": 150.0,
+    "height": 92.0,
+    "anchor": ""
+  },
+  "sonscan": {
+    "type": "SO",
+    "filename": "Ames_scan_empreinte",
+    "loop": false,
+    "volume": 1.0,
+    "duration": 5
+  },
+  "animationScanEmpreinte": {
+    "type": "AI",
+    "filename": "scanEmpreinte",
+    "nbImage": 1,
+    "loop": true,
+    "x": -500.0,
+    "y": -500.0,
+    "framerate": 1.0,
+    "duration": 16,
+    "width": 480.0,
+    "height": 320.0
+  },
+  "gameplayclear3": {
+    "type": "CE",
+    "name": "example",
+    "clear": "",
+    "clearAll": true
+  },
+  "introText7": {
+    "type": "AT",
+    "text": "Merci. A présent, nous allons procéder à une synchronisation rétinienne. Merci de cadrer votre oeil et d’appuyer sur le bouton SYNC.     Tapez quand vous êtes prêt.",
+    "x": 0.0,
+    "y": 0.0,
+    "fontSize": 20.0,
+    "color": "0xFFFFFF",
+    "duration": 5,
+    "anchor": "",
+    "printSpeed": 0.05
+  },
+  "gameplayclear4": {
+    "type": "CE",
+    "name": "example",
+    "clear": "introText7",
+    "clearAll": false
+  },
+  "camera1": {
+    "type": "CA",
+    "overlay": "scanRetine",
+    "x": 0.0,
+    "y": 0.0,
+    "width": 150.0,
+    "height": 92.0,
+    "anchor": ""
+  },
+  "interfaceEyeScan": {
+    "type": "SP",
+    "filename": "interface_eyescan",
+    "x": 480.0,
+    "y": 320.0,
+    "width": 480.0,
+    "height": 320.0,
+    "anchor": ""
+  },
+  "syncButton2": {
+    "type": "SP",
+    "filename": "sync",
+    "x": 480.0,
+    "y": 320.0,
+    "width": 480.0,
+    "height": 320.0,
+    "anchor": ""
+  },
+  "sonscan2": {
+    "type": "SO",
+    "filename": "Ames_scan_retine",
+    "loop": false,
+    "volume": 1.0,
+    "duration": 5
+  },
+  "gameplayclear5": {
+    "type": "CE",
+    "name": "example",
+    "clear": "",
+    "clearAll": true
+  },
+  "introText8": {
+    "type": "AT",
+    "text": "Merci. La caméra 2 de l’A M E S sera à présent en suivi de point permanent sur votre rétine afin de permettre à l’Agence de suivre votre état psychologique lors de l’expérience. L’A M E S va aussi retransmettre votre rythme cardiaque à l’Agence pour que nous puissions veiller sur votre sécurité et votre santé à tout instant.    Tapez pour continuer.",
+    "x": 0.0,
+    "y": 0.0,
+    "fontSize": 20.0,
+    "color": "0xFFFFFF",
+    "duration": 5,
+    "anchor": "",
+    "printSpeed": 0.05
+  },
+  "gameplayintro5": {
+    "type": "SR",
+    "name": "example",
+    "stopRead": true
+  },
+  "introText9": {
+    "type": "AT",
+    "text": "Dernière précision, pour être totalement efficace, l'A M E S doit être utilisé de nuit et toutes lumières éteintes. Veuillez s'il vous plait éteindre la lumière ou faire le noir chez vous.",
+    "x": 0.0,
+    "y": 0.0,
+    "fontSize": 20.0,
+    "color": "0xFFFFFF",
+    "duration": 5,
+    "anchor": "",
+    "printSpeed": 0.05
+  },
+  "checkLights": {
+    "type": "CL",
+    "turnOn": true
+  },
+  "gameplayintro6": {
+    "type": "SR",
+    "name": "example",
+    "stopRead": true
+  },
+  "introText10": {
+    "type": "AT",
+    "text": "Merci. Nous allons maintenant vous mettre en relation avec une de nos opératrices pour vous assister dans le programme de test. Veuillez mettre à présent votre casque-micro.",
+    "x": 0.0,
+    "y": 0.0,
+    "fontSize": 20.0,
+    "color": "0xFFFFFF",
+    "duration": 5,
+    "anchor": "",
+    "printSpeed": 0.05
+  },
+  "checkHeadphone": {
+    "type": "CH",
+    "turnOn": true
+  },
+  "gameplayclear6": {
+    "type": "CE",
+    "name": "example",
+    "clear": "",
+    "clearAll": true
   }
 }
