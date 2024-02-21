@@ -8,6 +8,7 @@ import 'package:ames/utils/widgets/customSpirit.dart';
 import 'package:ames/utils/widgets/movableImage.dart';
 import 'package:ames/utils/widgets/remove.dart';
 import 'package:ames/utils/widgets/removeAll.dart';
+import 'package:ames/utils/widgets/sound.dart';
 import 'package:flame/components.dart';
 import 'package:flame/text.dart';
 import 'package:flutter/services.dart';
@@ -55,6 +56,9 @@ class JsonParser {
               break;
             case 'RM':
               widget = buildRemove(map);
+              break;
+            case 'SO':
+              widget = buildSound(map);
               break;
             case 'WA':
               widget = Waiting(duration: map["duration"]);
@@ -142,6 +146,14 @@ class JsonParser {
 
   Remove buildRemove(Map<String, dynamic> map) {
     return Remove(name: map['name']);
+  }
+
+  Sound buildSound(Map<String, dynamic> map) {
+    return Sound(
+        filename: map['filename'],
+        duration: map['duration'],
+        loop: map['loop'],
+        volume: map['volume']);
   }
 
   Anchor parseAnchor(String anchor) {
