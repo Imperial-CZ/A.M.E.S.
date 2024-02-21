@@ -162,9 +162,9 @@ class JsonParser {
         volume: map['volume']);
   }
 
-  checkHeadphone(Map<String, dynamic> map) {}
+  //TODO : checkHeadphone(Map<String, dynamic> map) {}
 
-  checkLight(Map<String, dynamic> map) {}
+  //TODO : checkLight(Map<String, dynamic> map) {}
 
   Anchor parseAnchor(String anchor) {
     switch (anchor) {
