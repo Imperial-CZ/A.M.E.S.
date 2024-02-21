@@ -10,9 +10,7 @@ class CameraCubit extends Cubit<CameraState> {
   late CameraController controller;
 
   Future<void> initCamera() async {
-    List<CameraDescription> _cameras = await availableCameras();
-    controller = CameraController(_cameras[0], ResolutionPreset.max);
-    await controller.initialize();
+
 
     emit(CameraLoaded(controller: controller));
   }
