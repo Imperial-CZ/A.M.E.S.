@@ -1,9 +1,12 @@
 import 'dart:async';
 import 'package:ames/core/gamemode.dart';
+import 'package:ames/utils/gameplay.dart';
 import 'package:ames/utils/jsonParser.dart';
 import 'package:ames/utils/waiting.dart';
 import 'package:ames/utils/widgets/animatedImage.dart';
 import 'package:ames/utils/widgets/customSpirit.dart';
+import 'package:ames/utils/widgets/remove.dart';
+import 'package:ames/utils/widgets/removeAll.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
@@ -26,6 +29,7 @@ class GameManager extends FlameGame with TapDetector {
 
   JsonParser jsonParser;
   GameMode gamemode = GameMode();
+  List<String> elementsOnScreen = [];
   int currentPosition = 0;
 
   Future<void> waitingToDelete(String elementName, int duration) async {
@@ -35,14 +39,11 @@ class GameManager extends FlameGame with TapDetector {
   }
 
   void removeAllComponent() {
-    for (int i = 0; i != currentPosition; i++) {
-      if (jsonParser.widgetQueue.values.elementAt(i) is Component) {
-        print("i : " +
-            i.toString() +
-            " Value : " +
-            jsonParser.widgetQueue.keys.elementAt(i));
-      }
+    for (int i = 0; i != elementsOnScreen.length; i++) {
+      print("i : " + i.toString() + " Value : " + elementsOnScreen[i]);
+      remove(jsonParser.widgetQueue[elementsOnScreen[i]]);
     }
+    elementsOnScreen.clear();
   }
 
   void continueDraw() async {
@@ -57,6 +58,9 @@ class GameManager extends FlameGame with TapDetector {
             seconds: (element as Waiting).duration,
           ),
         );
+      } else if (element is Gameplay ||
+          element is Remove ||
+          element is RemoveAll) {
       } else if (element is CustomSpirit || element is AnimatedImage) {
         // if (element is CustomSpirit) {
         //   // Stream stream;
@@ -65,9 +69,13 @@ class GameManager extends FlameGame with TapDetector {
         // }
         // element.add(element as Component);
         print("VALUE : " + element.toString());
+        elementsOnScreen
+            .add(jsonParser.widgetQueue.keys.elementAt(currentPosition));
         add(element as Component);
       } else {
         print("VALUE : " + element.toString());
+        elementsOnScreen
+            .add(jsonParser.widgetQueue.keys.elementAt(currentPosition));
         add(element as Component);
       }
     }
