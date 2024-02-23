@@ -22,28 +22,28 @@ class GameScreen extends StatelessWidget {
           return const CircularProgressIndicator();
         } else if (state is GameLoaded) {
           return Scaffold(
-            body: Container(
-              child: Stack(
-                children: [
-                  GameWidget(
-                    game: GameManager(
-                      jsonParser: state.jsonParser,
-                    ),
-                    backgroundBuilder: (BuildContext context) {
-                      if(state.isCamera) {
-                        return CameraPreview(
-                          state.controller,
-                        );
-                      } else {
-                        return Container(
-                        color: Colors.black,
-                      );
-                      }
-
-                    },
-                  ),
-                ],
+            body: GameWidget(
+              game: GameManager(
+                jsonParser: state.jsonParser,
               ),
+              backgroundBuilder: (BuildContext context) {
+                if(true) {
+                  return Positioned(
+                    top: 0.0,
+                    left: 0.0,
+                    right: 0.0,
+                    bottom: 0.0,
+                    child: CameraPreview(
+                      state.controller,
+                    ),
+                  );
+                } else {
+                  return Container(
+                  color: Colors.black,
+                );
+                }
+
+              },
             ),
           );
         } else {
