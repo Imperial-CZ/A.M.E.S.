@@ -19,19 +19,31 @@ class GameScreen extends StatelessWidget {
       builder: (context, state) {
         if (state is GameInitial) {
           cubit.initialize();
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         } else if (state is GameLoaded) {
           return Scaffold(
-            backgroundColor: Colors.transparent,
-            body: Stack(
-              children: [
-                GameWidget(
-                  game: GameManager(
-                    jsonParser: state.jsonParser,
+            body: Container(
+              child: Stack(
+                children: [
+                  GameWidget(
+                    game: GameManager(
+                      jsonParser: state.jsonParser,
+                    ),
+                    backgroundBuilder: (BuildContext context) {
+                      if(state.isCamera) {
+                        return CameraPreview(
+                          state.controller,
+                        );
+                      } else {
+                        return Container(
+                        color: Colors.black,
+                      );
+                      }
+
+                    },
                   ),
-                ),
-                CameraPreview(state.controller),
-              ],
+                ],
+              ),
             ),
           );
         } else {

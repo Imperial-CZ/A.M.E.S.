@@ -12,5 +12,6 @@ class GameInitial extends GameState {
 class GameLoaded extends GameState {
   JsonParser jsonParser;
   CameraController controller;
+  bool isCamera = false;
   GameLoaded({required this.jsonParser,required this.controller});
 }
