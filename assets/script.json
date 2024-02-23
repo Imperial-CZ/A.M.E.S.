@@ -228,12 +228,7 @@
   "camera1": {
     "type": "CA",
     "overlay": "scanRetine",
-    "state": true,
-    "x": 0.0,
-    "y": 0.0,
-    "width": 150.0,
-    "height": 92.0,
-    "anchor": ""
+    "state": true
   },
   "interfaceEyeScan": {
     "type": "SP",
@@ -263,12 +258,7 @@
   "camera2": {
     "type": "CA",
     "overlay": "",
-    "state": false,
-    "x": 0.0,
-    "y": 0.0,
-    "width": 150.0,
-    "height": 92.0,
-    "anchor": ""
+    "state": false
   },
   "gameplayclear5": {
     "type": "CE",
