@@ -7,11 +7,27 @@
     "width": 150.0,
     "height": 92.0,
     "anchor": "",
-    "isTapable": true
+    "isTapable": true,
+    "eventName": "continueDraw"
   },
-  "waiting1": {
-    "type": "WA",
-    "duration": 10
+  "startText1": {
+    "type": "TC",
+    "text": "AMES is ready, press start",
+    "x": 300.0,
+    "y": 150.0,
+    "fontSize": 20.0,
+    "color": "white",
+    "anchor": "topLeft"
+  },
+  "stopRead": {
+    "type": "SR"
+  },
+  "removeAllElement": {
+    "type": "RMA"
+  },
+  "gamemode1": {
+    "type": "GM",
+    "name": "onClickOnScreenContinueDrawEvent"
   },
   "imageBoot": {
     "type": "SP",
@@ -22,6 +38,10 @@
     "height": 320.0,
     "anchor": "",
     "isTapable": false
+  },
+  "waiting": {
+    "type": "WA",
+    "duration": 3
   },
   "animationFond": {
     "type": "AI",
@@ -37,52 +57,224 @@
     "sizeMultiplicator": 1.3,
     "isTapable": false
   },
+  "waiting2": {
+    "type": "WA",
+    "duration": 3
+  },
   "introText1": {
     "type": "AT",
-    "text": "Bonjour chers utilisateurs de l’A M E S (Amplificateur Mediumnique Extrasensoriel) Version trois point zéro. Vous avez été sélectionné par l’Agence  pour notre programme de recherche sur le potentiel médiumnique de la population.  Vous allez être exposé à des évènements paranormaux.    Tapez pour continuer.",
-    "x": 0.0,
-    "y": 0.0,
+    "text": "Bonjour chers utilisateurs de l'A M E S (Amplificateur Mediumnique\nExtrasensoriel) Version trois point zéro. Vous avez été sélectionné par\nL'Agence pour notre programme de recherche sur le potentiel médiumnique\nde la population.\n\nTapez pour continuer.",
+    "x": 100.0,
+    "y": 150.0,
     "fontSize": 20.0,
-    "color": "0xFFFFFF",
+    "color": "white",
     "duration": 0,
-    "anchor": "",
+    "anchor": "topLeft",
     "printSpeed": 0.05,
     "isTapable": false
+  },
+  "stopRead1": {
+    "type": "SR"
+  },
+  "removeElement1": {
+    "type": "RM",
+    "name": "introText1"
   },
   "introText2": {
     "type": "AT",
-    "text": "Bonjour chers utilisateurs de l’A M E S (Amplificateur Mediumnique Extrasensoriel) Version trois point zéro. Vous avez été sélectionné par l’Agence  pour notre programme de recherche sur le potentiel médiumnique de la population.  Vous allez être exposé à des évènements paranormaux.    Tapez pour continuer.",
-    "x": 0.0,
-    "y": 0.0,
+    "text": "Le programme A M E S que vous venez d'installer transforme votre téléphone\nen véritable antenne à auras. Si votre sensibilité médiumnique est assez\nélevée, l'Agence vous recontactera pour de plus amples informations et de\nnouvelles consignes.\n\nTapez pour continuer.",
+    "x": 100.0,
+    "y": 150.0,
     "fontSize": 20.0,
-    "color": "0xFFFFFF",
-    "duration": 0,
-    "anchor": "",
+    "color": "white",
+    "duration": 5,
+    "anchor": "topLeft",
     "printSpeed": 0.05,
     "isTapable": false
+  },
+  "stopRead2": {
+    "type": "SR"
+  },
+  "removeElement2": {
+    "type": "RM",
+    "name": "introText2"
+  },
+  "gamemode3": {
+    "type": "GM",
+    "name": "empty"
   },
   "introText3": {
     "type": "AT",
-    "text": "Nous allons maintenant procéder à quelques étapes préparatoires pour le test. Veuillez répondre aux questions suivantes. Confirmez vous que vous êtes bien à votre domicile ?",
-    "x": 0.0,
-    "y": 0.0,
+    "text": "Nous allons maintenant procéder à quelques étapes préparatoires pour le\ntest. Veuillez répondre aux questions suivantes. Confirmez vous que vous\nêtes bien à votre domicile ?",
+    "x": 100.0,
+    "y": 150.0,
     "fontSize": 20.0,
-    "color": "0xFFFFFF",
+    "color": "white",
     "duration": 5,
-    "anchor": "",
+    "anchor": "topLeft",
     "printSpeed": 0.05,
     "isTapable": false
   },
-  "gameplayintro1": {
-    "type": "GM",
-    "name": "example",
-    "stopRead": true
+  "waiting3": {
+    "type": "WA",
+    "duration": 10
   },
-  "removeAll": {
-    "type": "RMA"
+  "yesButton": {
+    "type": "SP",
+    "filename": "yes",
+    "x": 200.0,
+    "y": 340.0,
+    "width": 150.0,
+    "height": 92.0,
+    "anchor": "",
+    "isTapable": true,
+    "eventName": "continueDraw"
   },
-  "remove1": {
+  "noButton": {
+    "type": "SP",
+    "filename": "no",
+    "x": 700.0,
+    "y": 340.0,
+    "width": 150.0,
+    "height": 92.0,
+    "anchor": "",
+    "isTapable": true,
+    "eventName": "killApp"
+  },
+  "stopRead3": {
+    "type": "SR"
+  },
+  "removeElement3": {
     "type": "RM",
-    "name": "NomDuComponentASupp"
+    "name": "introText3"
+  },
+  "removeElement4": {
+    "type": "RM",
+    "name": "yesButton"
+  },
+  "removeElement5": {
+    "type": "RM",
+    "name": "noButton"
+  },
+  "introText4": {
+    "type": "AT",
+    "text": "Merci. Le test que vous allez subir ne doit pas être interrompu. Pouvez vous\négalement confirmer que vous avez une dizaine de minutes devant vous ?",
+    "x": 100.0,
+    "y": 150.0,
+    "fontSize": 20.0,
+    "color": "white",
+    "duration": 5,
+    "anchor": "topLeft",
+    "printSpeed": 0.05,
+    "isTapable": false
+  },
+  "waiting4": {
+    "type": "WA",
+    "duration": 8
+  },
+  "yesButton2": {
+    "type": "SP",
+    "filename": "yes",
+    "x": 200.0,
+    "y": 340.0,
+    "width": 150.0,
+    "height": 92.0,
+    "anchor": "",
+    "isTapable": true,
+    "eventName": "continueDraw"
+  },
+  "noButton2": {
+    "type": "SP",
+    "filename": "no",
+    "x": 700.0,
+    "y": 340.0,
+    "width": 150.0,
+    "height": 92.0,
+    "anchor": "",
+    "isTapable": true,
+    "eventName": "killApp"
+  },
+  "stopRead4": {
+    "type": "SR"
+  },
+  "removeElement6": {
+    "type": "RM",
+    "name": "introText4"
+  },
+  "removeElement7": {
+    "type": "RM",
+    "name": "yesButton2"
+  },
+  "removeElement8": {
+    "type": "RM",
+    "name": "noButton2"
+  },
+  "introText5": {
+    "type": "AT",
+    "text": "Merci. Si vous acceptez de participer à ce test et acceptez\nles conditions précédemment définies, veuillez appliquer\nvotre pouce sur le lecteur qui apparait à l'écran. Votre\nempreinte digitale fera office de signature.",
+    "x": 100.0,
+    "y": 150.0,
+    "fontSize": 20.0,
+    "color": "white",
+    "duration": 5,
+    "anchor": "topLeft",
+    "printSpeed": 0.05,
+    "isTapable": false
+  },
+  "waiting5": {
+    "type": "WA",
+    "duration": 12
+  },
+  "scanButton": {
+    "type": "SP",
+    "filename": "scanButton",
+    "x": 700.0,
+    "y": 300.0,
+    "width": 79.0,
+    "height": 191.0,
+    "anchor": "",
+    "isTapable": true,
+    "eventName": "continueDraw"
+  },
+  "stopRead5": {
+    "type": "SR"
+  },
+  "removeElement9": {
+    "type": "RM",
+    "name": "scanButton"
+  },
+  "fingerPrint": {
+    "type": "SP",
+    "filename": "fingerPrint",
+    "x": 700.0,
+    "y": 300.0,
+    "width": 85.0,
+    "height": 197.0,
+    "anchor": "",
+    "isTapable": false,
+    "eventName": "empty"
+  },
+  "waiting6": {
+    "type": "WA",
+    "duration": 3
+  },
+  "movableImage": {
+    "type": "MI",
+    "filename": "scanEmpreinte_0",
+    "xBegin": 700.0,
+    "yBegin": 200.0,
+    "xEnd": 700.0,
+    "yEnd": 500.0,
+    "width": 131.0,
+    "height": 73.0,
+    "speedMultiplicator": 2.0,
+    "anchor": ""
+  },
+  "waiting7": {
+    "type": "WA",
+    "duration": 5
+  },
+  "removeAllElement2": {
+    "type": "RMA"
   }
 }

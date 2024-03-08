@@ -57,6 +57,7 @@ class AnimatedText extends TextComponent with HasGameRef<GameManager> {
       if (letterToPrint == allText.length) {
         text = allText.characters.getRange(0, letterToPrint).toString();
       } else {
+        print("writting in route");
         text = "${allText.characters.getRange(0, letterToPrint)}-";
       }
       letterToPrint += 1;

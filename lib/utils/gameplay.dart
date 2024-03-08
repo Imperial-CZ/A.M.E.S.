@@ -1,6 +1,12 @@
-class Gameplay {
-  String name;
-  bool stopRead;
+enum GameplayName {
+  empty,
+  onClickRightBottomCornerContinueDrawEvent,
+  onClickOnScreenContinueDrawEvent,
+  onClickRightSideContinueDrawOnClickLeftSideCloseAppEvent
+}
 
-  Gameplay({required this.name, required this.stopRead});
+class Gameplay {
+  GameplayName name;
+
+  Gameplay({required this.name});
 }

@@ -13,12 +13,16 @@ class MovableImage extends SpriteComponent with HasGameRef<GameManager> {
   double ratioX = 1;
   double ratioY = 1;
 
-  MovableImage(
-      {required this.path,
-      required this.initialCoord,
-      required this.finalCoord,
-      required this.imageSize,
-      this.anchorInput}) {
+  double speedMultiplicator;
+
+  MovableImage({
+    required this.path,
+    required this.initialCoord,
+    required this.finalCoord,
+    required this.imageSize,
+    this.speedMultiplicator = 1.0,
+    this.anchorInput,
+  }) {
     if (position.x - finalCoord.x < position.y - finalCoord.y) {
       ratioX = (position.x - finalCoord.x) / (position.y - finalCoord.y);
     } else {
@@ -43,10 +47,10 @@ class MovableImage extends SpriteComponent with HasGameRef<GameManager> {
   void update(double dt) {
     super.update(dt);
     if (position.x < finalCoord.x) {
-      position.x += ratioX;
+      position.x += ratioX * speedMultiplicator;
     }
     if (position.y < finalCoord.y) {
-      position.y += ratioY;
+      position.y += ratioY * speedMultiplicator;
     }
   }
 }

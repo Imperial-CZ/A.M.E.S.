@@ -1,10 +1,11 @@
 import 'dart:async';
 
 import 'package:ames/utils/game_manager.dart';
+import 'package:ames/utils/widgets/onClickButtonEvent.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 
-class CustomSpirit extends SpriteComponent
+class CustomSprite extends SpriteComponent
     with HasGameRef<GameManager>, TapCallbacks {
   String path;
 
@@ -16,14 +17,19 @@ class CustomSpirit extends SpriteComponent
 
   bool activateCallback;
 
+  bool isButtonTrigger = false;
+
+  OnClickButtonEvent onClickButtonEvent;
+
   Stream<bool> trigger = Stream.value(false);
 
-  CustomSpirit({
+  CustomSprite({
     required this.path,
     required this.coord,
     required this.imageSize,
     required this.anchorInput,
     required this.activateCallback,
+    required this.onClickButtonEvent,
   });
 
   @override
@@ -42,7 +48,7 @@ class CustomSpirit extends SpriteComponent
   @override
   void onTapDown(TapDownEvent event) {
     if (activateCallback == true) {
-      // trigger.;
+      isButtonTrigger = true;
       print("Custom Spirit tap down");
     }
   }

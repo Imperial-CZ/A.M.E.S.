@@ -1,47 +1,43 @@
 import 'dart:async';
-import 'package:ames/core/gamemode.dart';
+import 'dart:io';
 import 'package:ames/utils/gameplay.dart';
 import 'package:ames/utils/jsonParser.dart';
 import 'package:ames/utils/waiting.dart';
 import 'package:ames/utils/widgets/animatedImage.dart';
+import 'package:ames/utils/widgets/animatedText.dart';
 import 'package:ames/utils/widgets/customSpirit.dart';
+import 'package:ames/utils/widgets/movableImage.dart';
+import 'package:ames/utils/widgets/onClickButtonEvent.dart';
 import 'package:ames/utils/widgets/remove.dart';
 import 'package:ames/utils/widgets/removeAll.dart';
+import 'package:ames/utils/widgets/stopRead.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flame/src/gestures/events.dart';
 
 class GameManager extends FlameGame with TapDetector {
-  // Map<String, dynamic> listComponent = {
-  //   "background": AnimatedImage(
-  //     fileName: "fond_",
-  //     nbImage: 47,
-  //     loop: true,
-  //     imageSize: Vector2(480, 320),
-  //     sizeMultiplicator: 1.0,
-  //     coord: Vector2(200, 200),
-  //     frameRate: 0.5,
-  //   ),
-  // };
-
   GameManager({required this.jsonParser});
 
   JsonParser jsonParser;
-  GameMode gamemode = GameMode();
+  var gamemode = GameplayName.empty;
   List<String> elementsOnScreen = [];
   int currentPosition = 0;
+  bool isReadStop = false;
 
-  Future<void> waitingToDelete(String elementName, int duration) async {
-    print("DELAYED");
-    await Future.delayed(Duration(seconds: duration));
-    remove(jsonParser.widgetQueue[elementName]);
+  void removeComponent(String componentName, {bool isRemoveAll = false}) {
+    if (elementsOnScreen.contains(componentName)) {
+      remove(jsonParser.widgetQueue[componentName]);
+      if (!isRemoveAll) {
+        elementsOnScreen.remove(componentName);
+      }
+    }
   }
 
   void removeAllComponent() {
     for (int i = 0; i != elementsOnScreen.length; i++) {
       print("i : " + i.toString() + " Value : " + elementsOnScreen[i]);
-      remove(jsonParser.widgetQueue[elementsOnScreen[i]]);
+      removeComponent(elementsOnScreen[i], isRemoveAll: true);
     }
     elementsOnScreen.clear();
   }
@@ -52,28 +48,28 @@ class GameManager extends FlameGame with TapDetector {
         currentPosition++) {
       dynamic element =
           jsonParser.widgetQueue.values.elementAt(currentPosition);
+
       if (element is Waiting) {
         await Future.delayed(
           Duration(
             seconds: (element as Waiting).duration,
           ),
         );
-      } else if (element is Gameplay ||
-          element is Remove ||
-          element is RemoveAll) {
-      } else if (element is CustomSpirit || element is AnimatedImage) {
-        // if (element is CustomSpirit) {
-        //   // Stream stream;
-        //   // stream.listen((event) { })
-        //   // element.
-        // }
-        // element.add(element as Component);
-        print("VALUE : " + element.toString());
-        elementsOnScreen
-            .add(jsonParser.widgetQueue.keys.elementAt(currentPosition));
-        add(element as Component);
-      } else {
-        print("VALUE : " + element.toString());
+      } else if (element is StopRead) {
+        isReadStop = true;
+        currentPosition++;
+        return;
+      } else if (element is Gameplay) {
+        gamemode = element.name;
+      } else if (element is Remove) {
+        removeComponent(element.name);
+      } else if (element is RemoveAll) {
+        removeAllComponent();
+      } else if (element is CustomSprite ||
+          element is AnimatedImage ||
+          element is TextComponent ||
+          element is AnimatedText ||
+          element is MovableImage) {
         elementsOnScreen
             .add(jsonParser.widgetQueue.keys.elementAt(currentPosition));
         add(element as Component);
@@ -90,15 +86,45 @@ class GameManager extends FlameGame with TapDetector {
   @override
   void onTapDown(TapDownInfo info) {
     super.onTapDown(info);
-    removeAllComponent();
-    // if (gamemode.currentGameMode!(info) == true) {
-    //   continueDraw();
-    // }
+    for (int i = 0; i != elementsOnScreen.length; i++) {
+      if (jsonParser.widgetQueue[elementsOnScreen[i]] is CustomSprite) {
+        if ((jsonParser.widgetQueue[elementsOnScreen[i]] as CustomSprite)
+                    .isButtonTrigger ==
+                true &&
+            (jsonParser.widgetQueue[elementsOnScreen[i]] as CustomSprite)
+                    .activateCallback ==
+                true) {
+          switch ((jsonParser.widgetQueue[elementsOnScreen[i]] as CustomSprite)
+              .onClickButtonEvent) {
+            case OnClickButtonEvent.empty:
+              return;
+            case OnClickButtonEvent.continueDraw:
+              onTapDownSpriteContinueDraw();
+              return;
+            case OnClickButtonEvent.killApp:
+              onTapDownSpriteKillApp();
+              return;
+          }
+        }
+      }
+    }
+    switch (gamemode) {
+      case GameplayName.empty:
+        emptyGameMode(info.eventPosition.global);
+      case GameplayName.onClickRightBottomCornerContinueDrawEvent:
+        onClickRightBottomCornerContinueDrawEvent(info.eventPosition.global);
+      case GameplayName.onClickOnScreenContinueDrawEvent:
+        onClickOnScreenContinueDrawEvent(info.eventPosition.global);
+      case GameplayName
+            .onClickRightSideContinueDrawOnClickLeftSideCloseAppEvent:
+        onClickRightSideContinueDrawOnClickLeftSideCloseAppEvent(
+            info.eventPosition.global);
+    }
   }
 
-  void introTapEvent(Vector2 tapPosition) {}
+  void emptyGameMode(Vector2 tapPosition) {}
 
-  void startTapEvent(Vector2 tapPosition) {
+  void onClickRightBottomCornerContinueDrawEvent(Vector2 tapPosition) {
     print("tapPosition.x = ${tapPosition.x}");
     print("tapPosition.y = ${tapPosition.y}");
 
@@ -106,8 +132,44 @@ class GameManager extends FlameGame with TapDetector {
     print("gameRef.size.toRect().height / 2 = ${size.toRect().height / 2}");
 
     if (tapPosition.x >= size.toRect().width / 2 &&
-        tapPosition.y >= size.toRect().height / 2) {
-      removeFromParent();
+        tapPosition.y >= size.toRect().height / 2 &&
+        isReadStop == true) {
+      isReadStop = false;
+      continueDraw();
+    }
+  }
+
+  void onClickOnScreenContinueDrawEvent(Vector2 tapPosition) {
+    if (isReadStop == true) {
+      isReadStop = false;
+      continueDraw();
+    }
+  }
+
+  void onClickRightSideContinueDrawOnClickLeftSideCloseAppEvent(
+      Vector2 tapPosition) {
+    if (isReadStop == true) {
+      if (tapPosition.x < size.toRect().width / 2 &&
+          tapPosition.y < size.toRect().height / 2) {
+        isReadStop = false;
+        continueDraw();
+      }
+      if (tapPosition.x >= size.toRect().width / 2 &&
+          tapPosition.y >= size.toRect().height / 2) {
+        exit(0);
+      }
+    }
+  }
+
+  void onTapDownSpriteContinueDraw() {
+    if (isReadStop == true) {
+      continueDraw();
+    }
+  }
+
+  void onTapDownSpriteKillApp() {
+    if (isReadStop == true) {
+      exit(0);
     }
   }
 }

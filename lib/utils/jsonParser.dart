@@ -6,11 +6,14 @@ import 'package:ames/utils/widgets/animatedImage.dart';
 import 'package:ames/utils/widgets/animatedText.dart';
 import 'package:ames/utils/widgets/customSpirit.dart';
 import 'package:ames/utils/widgets/movableImage.dart';
+import 'package:ames/utils/widgets/onClickButtonEvent.dart';
 import 'package:ames/utils/widgets/remove.dart';
 import 'package:ames/utils/widgets/removeAll.dart';
 import 'package:ames/utils/widgets/sound.dart';
+import 'package:ames/utils/widgets/stopRead.dart';
 import 'package:flame/components.dart';
 import 'package:flame/text.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class JsonParser {
@@ -35,37 +38,28 @@ class JsonParser {
           switch (value) {
             case 'TC':
               widget = buildTextComponent(map);
-              break;
             case 'AT':
               widget = buildAnimatedText(map);
-              break;
             case 'AI':
               widget = buildAnimatedImage(map);
-              break;
             case 'SP':
               widget = buildSprite(map);
-              break;
             case 'MI':
               widget = buildMovableImage(map);
-              break;
             case 'GM':
               widget = buildGameplay(map);
-              break;
+            case 'SR':
+              widget = buildStopRead(map);
             case 'RMA':
               widget = buildRemoveAll(map);
-              break;
             case 'RM':
               widget = buildRemove(map);
-              break;
             case 'SO':
               widget = buildSound(map);
             case 'CH':
               widget = checkHeadphone(map);
             case 'CL':
               widget = checkLight(map);
-            case 'SO':
-              widget = buildSound(map);
-              break;
             case 'WA':
               widget = Waiting(duration: map["duration"]);
             default:
@@ -86,7 +80,7 @@ class JsonParser {
         anchor: parseAnchor(map['anchor']),
         textRenderer: TextPaint(
           style: TextStyle(
-            color: Color(map['color']),
+            color: parseColor(map['color']),
             fontSize: map['fontSize'], //? type : Double
           ),
         ));
@@ -99,7 +93,7 @@ class JsonParser {
       anchorInput: parseAnchor(map['anchor']),
       textRendererInput: TextPaint(
         style: TextStyle(
-          color: Color(int.parse(map['color'])),
+          color: parseColor(map['color']),
           fontSize: map['fontSize'], //? type : Double
         ),
       ),
@@ -120,13 +114,14 @@ class JsonParser {
     );
   }
 
-  CustomSpirit buildSprite(Map<String, dynamic> map) {
-    return CustomSpirit(
+  CustomSprite buildSprite(Map<String, dynamic> map) {
+    return CustomSprite(
       path: map['filename'],
       coord: Vector2(map['x'], map['y']),
       imageSize: Vector2(map['width'], map['height']),
       anchorInput: parseAnchor(map['anchor']),
       activateCallback: map['isTapable'],
+      onClickButtonEvent: parseButtonEvent(map['eventName']),
     );
   }
 
@@ -135,15 +130,36 @@ class JsonParser {
         path: map['filename'],
         initialCoord: Vector2(map['xBegin'], map['yBegin']),
         finalCoord: Vector2(map['xEnd'], map['yEnd']),
-        imageSize: Vector2(map['width'], map['end']),
-        anchorInput: parseAnchor(map['anchor']));
+        imageSize: Vector2(map['width'], map['height']),
+        anchorInput: parseAnchor(map['anchor']),
+        speedMultiplicator: map['speedMultiplicator']);
   }
 
   Gameplay buildGameplay(Map<String, dynamic> map) {
-    return Gameplay(
-      name: map['name'],
-      stopRead: map['stopRead'],
-    );
+    switch (map['name']) {
+      case "empty":
+        return Gameplay(
+          name: GameplayName.empty,
+        );
+      case "onClickRightBottomCornerContinueDrawEvent":
+        return Gameplay(
+          name: GameplayName.onClickRightBottomCornerContinueDrawEvent,
+        );
+      case "onClickOnScreenContinueDrawEvent":
+        return Gameplay(
+          name: GameplayName.onClickOnScreenContinueDrawEvent,
+        );
+      case "onClickRightSideContinueDrawOnClickLeftSideCloseAppEvent":
+        return Gameplay(
+          name: GameplayName
+              .onClickRightSideContinueDrawOnClickLeftSideCloseAppEvent,
+        );
+    }
+    return Gameplay(name: GameplayName.empty);
+  }
+
+  StopRead buildStopRead(Map<String, dynamic> map) {
+    return StopRead();
   }
 
   RemoveAll buildRemoveAll(Map<String, dynamic> map) {
@@ -162,9 +178,9 @@ class JsonParser {
         volume: map['volume']);
   }
 
-  //TODO : checkHeadphone(Map<String, dynamic> map) {}
+  checkHeadphone(Map<String, dynamic> map) {}
 
-  //TODO : checkLight(Map<String, dynamic> map) {}
+  checkLight(Map<String, dynamic> map) {}
 
   Anchor parseAnchor(String anchor) {
     switch (anchor) {
@@ -190,5 +206,31 @@ class JsonParser {
         print('Anchor is not found, default value is center');
         return Anchor.center;
     }
+  }
+
+  OnClickButtonEvent parseButtonEvent(String? onClickButtonEventName) {
+    switch (onClickButtonEventName) {
+      case 'empty':
+        return OnClickButtonEvent.empty;
+      case 'continueDraw':
+        return OnClickButtonEvent.continueDraw;
+      case 'killApp':
+        return OnClickButtonEvent.killApp;
+    }
+
+    return OnClickButtonEvent.empty;
+  }
+
+  Color parseColor(String? colorName) {
+    switch (colorName) {
+      case 'white':
+        return Colors.white;
+      case 'red':
+        return Colors.red;
+      case 'blue':
+        return Colors.blue;
+    }
+
+    return Colors.white;
   }
 }
