@@ -1,4 +1,4 @@
-enum OnClickButtonEvent {
+enum OnClickButtonEventName {
   empty,
   killApp,
   continueDraw,

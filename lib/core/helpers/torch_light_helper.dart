@@ -1,6 +1,6 @@
 import 'package:torch_light/torch_light.dart';
 
-class TorchLightManager {
+class TorchLightHelper {
   final bool isTorchAvailable = false;
 
   Future<void> enableTorch() async {

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
 
 class Sound {
-  static AudioPlayer player = new AudioPlayer();
+  static AudioPlayer player = AudioPlayer();
   String filename;
   int duration;
   bool loop;

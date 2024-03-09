@@ -1,4 +1,4 @@
-import 'package:ames/utils/jsonParser.dart';
+import 'package:ames/core/json_parser/json_parser.dart';
 
 abstract class GameState {
   GameState();

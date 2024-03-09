@@ -1,16 +1,16 @@
 import 'dart:convert';
-import 'dart:ffi';
-import 'package:ames/utils/gameplay.dart';
-import 'package:ames/utils/waiting.dart';
-import 'package:ames/utils/widgets/animatedImage.dart';
-import 'package:ames/utils/widgets/animatedText.dart';
-import 'package:ames/utils/widgets/customSpirit.dart';
-import 'package:ames/utils/widgets/movableImage.dart';
-import 'package:ames/utils/widgets/onClickButtonEvent.dart';
-import 'package:ames/utils/widgets/remove.dart';
-import 'package:ames/utils/widgets/removeAll.dart';
-import 'package:ames/utils/widgets/sound.dart';
-import 'package:ames/utils/widgets/stopRead.dart';
+import 'package:ames/core/enum/gamemode_name.dart';
+import 'package:ames/core/json_parser/custom_type/gameplay.dart';
+import 'package:ames/core/json_parser/custom_type/waiting.dart';
+import 'package:ames/core/flame/components/animated_image.dart';
+import 'package:ames/core/flame/components/animated_text.dart';
+import 'package:ames/core/flame/components/custom_spirit.dart';
+import 'package:ames/core/flame/components/movable_image.dart';
+import 'package:ames/core/enum/on_click_button_event.dart';
+import 'package:ames/core/json_parser/custom_type/remove.dart';
+import 'package:ames/core/json_parser/custom_type/remove_all.dart';
+import 'package:ames/core/json_parser/custom_type/sound.dart';
+import 'package:ames/core/json_parser/custom_type/stop_read.dart';
 import 'package:flame/components.dart';
 import 'package:flame/text.dart';
 import 'package:flutter/material.dart';
@@ -135,27 +135,27 @@ class JsonParser {
         speedMultiplicator: map['speedMultiplicator']);
   }
 
-  Gameplay buildGameplay(Map<String, dynamic> map) {
+  Gamemode buildGameplay(Map<String, dynamic> map) {
     switch (map['name']) {
       case "empty":
-        return Gameplay(
-          name: GameplayName.empty,
+        return Gamemode(
+          name: GamemodeName.empty,
         );
       case "onClickRightBottomCornerContinueDrawEvent":
-        return Gameplay(
-          name: GameplayName.onClickRightBottomCornerContinueDrawEvent,
+        return Gamemode(
+          name: GamemodeName.onClickRightBottomCornerContinueDrawEvent,
         );
       case "onClickOnScreenContinueDrawEvent":
-        return Gameplay(
-          name: GameplayName.onClickOnScreenContinueDrawEvent,
+        return Gamemode(
+          name: GamemodeName.onClickOnScreenContinueDrawEvent,
         );
       case "onClickRightSideContinueDrawOnClickLeftSideCloseAppEvent":
-        return Gameplay(
-          name: GameplayName
+        return Gamemode(
+          name: GamemodeName
               .onClickRightSideContinueDrawOnClickLeftSideCloseAppEvent,
         );
     }
-    return Gameplay(name: GameplayName.empty);
+    return Gamemode(name: GamemodeName.empty);
   }
 
   StopRead buildStopRead(Map<String, dynamic> map) {
@@ -208,17 +208,17 @@ class JsonParser {
     }
   }
 
-  OnClickButtonEvent parseButtonEvent(String? onClickButtonEventName) {
+  OnClickButtonEventName parseButtonEvent(String? onClickButtonEventName) {
     switch (onClickButtonEventName) {
       case 'empty':
-        return OnClickButtonEvent.empty;
+        return OnClickButtonEventName.empty;
       case 'continueDraw':
-        return OnClickButtonEvent.continueDraw;
+        return OnClickButtonEventName.continueDraw;
       case 'killApp':
-        return OnClickButtonEvent.killApp;
+        return OnClickButtonEventName.killApp;
     }
 
-    return OnClickButtonEvent.empty;
+    return OnClickButtonEventName.empty;
   }
 
   Color parseColor(String? colorName) {

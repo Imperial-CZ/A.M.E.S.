@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flame/components.dart';
-import '../game_manager.dart';
+import '../gamemanager/game_manager.dart';
 
 class MovableImage extends SpriteComponent with HasGameRef<GameManager> {
   String path;

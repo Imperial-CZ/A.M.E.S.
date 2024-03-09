@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:ames/utils/game_manager.dart';
-import 'package:ames/utils/widgets/onClickButtonEvent.dart';
+import 'package:ames/core/flame/gamemanager/game_manager.dart';
+import 'package:ames/core/enum/on_click_button_event.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 
@@ -19,7 +19,7 @@ class CustomSprite extends SpriteComponent
 
   bool isButtonTrigger = false;
 
-  OnClickButtonEvent onClickButtonEvent;
+  OnClickButtonEventName onClickButtonEvent;
 
   Stream<bool> trigger = Stream.value(false);
 

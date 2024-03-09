@@ -1,16 +1,17 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:ames/utils/gameplay.dart';
-import 'package:ames/utils/jsonParser.dart';
-import 'package:ames/utils/waiting.dart';
-import 'package:ames/utils/widgets/animatedImage.dart';
-import 'package:ames/utils/widgets/animatedText.dart';
-import 'package:ames/utils/widgets/customSpirit.dart';
-import 'package:ames/utils/widgets/movableImage.dart';
-import 'package:ames/utils/widgets/onClickButtonEvent.dart';
-import 'package:ames/utils/widgets/remove.dart';
-import 'package:ames/utils/widgets/removeAll.dart';
-import 'package:ames/utils/widgets/stopRead.dart';
+import 'package:ames/core/enum/gamemode_name.dart';
+import 'package:ames/core/json_parser/custom_type/gameplay.dart';
+import 'package:ames/core/json_parser/json_parser.dart';
+import 'package:ames/core/json_parser/custom_type/waiting.dart';
+import 'package:ames/core/flame/components/animated_image.dart';
+import 'package:ames/core/flame/components/animated_text.dart';
+import 'package:ames/core/flame/components/custom_spirit.dart';
+import 'package:ames/core/flame/components/movable_image.dart';
+import 'package:ames/core/enum/on_click_button_event.dart';
+import 'package:ames/core/json_parser/custom_type/remove.dart';
+import 'package:ames/core/json_parser/custom_type/remove_all.dart';
+import 'package:ames/core/json_parser/custom_type/stop_read.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
@@ -20,7 +21,7 @@ class GameManager extends FlameGame with TapDetector {
   GameManager({required this.jsonParser});
 
   JsonParser jsonParser;
-  var gamemode = GameplayName.empty;
+  var gamemode = GamemodeName.empty;
   List<String> elementsOnScreen = [];
   int currentPosition = 0;
   bool isReadStop = false;
@@ -59,7 +60,7 @@ class GameManager extends FlameGame with TapDetector {
         isReadStop = true;
         currentPosition++;
         return;
-      } else if (element is Gameplay) {
+      } else if (element is Gamemode) {
         gamemode = element.name;
       } else if (element is Remove) {
         removeComponent(element.name);
@@ -96,12 +97,12 @@ class GameManager extends FlameGame with TapDetector {
                 true) {
           switch ((jsonParser.widgetQueue[elementsOnScreen[i]] as CustomSprite)
               .onClickButtonEvent) {
-            case OnClickButtonEvent.empty:
+            case OnClickButtonEventName.empty:
               return;
-            case OnClickButtonEvent.continueDraw:
+            case OnClickButtonEventName.continueDraw:
               onTapDownSpriteContinueDraw();
               return;
-            case OnClickButtonEvent.killApp:
+            case OnClickButtonEventName.killApp:
               onTapDownSpriteKillApp();
               return;
           }
@@ -109,13 +110,13 @@ class GameManager extends FlameGame with TapDetector {
       }
     }
     switch (gamemode) {
-      case GameplayName.empty:
+      case GamemodeName.empty:
         emptyGameMode(info.eventPosition.global);
-      case GameplayName.onClickRightBottomCornerContinueDrawEvent:
+      case GamemodeName.onClickRightBottomCornerContinueDrawEvent:
         onClickRightBottomCornerContinueDrawEvent(info.eventPosition.global);
-      case GameplayName.onClickOnScreenContinueDrawEvent:
+      case GamemodeName.onClickOnScreenContinueDrawEvent:
         onClickOnScreenContinueDrawEvent(info.eventPosition.global);
-      case GameplayName
+      case GamemodeName
             .onClickRightSideContinueDrawOnClickLeftSideCloseAppEvent:
         onClickRightSideContinueDrawOnClickLeftSideCloseAppEvent(
             info.eventPosition.global);

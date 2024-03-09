@@ -1,4 +1,3 @@
-import 'package:ames/ui/game/cubit/camera/camera_screen.dart';
 import 'package:ames/ui/game/game_screen.dart';
 import 'package:flame/flame.dart';
 import 'package:flutter/material.dart';

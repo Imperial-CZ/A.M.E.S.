@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:ames/utils/game_manager.dart';
+import 'package:ames/core/flame/gamemanager/game_manager.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 
