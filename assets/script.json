@@ -1,115 +1,4 @@
 {
-  "grille2": {
-    "type": "SP",
-    "filename": "grille_25",
-    "x": 0.0,
-    "y": 0.0,
-    "originWidth": 480.0,
-    "originHeight": 320.0,
-    "width": 900.0,
-    "height": 410.0,
-    "anchor": "topLeft",
-    "sizeMultiplicator": 1.3,
-    "isTapable": false
-  },
-  "movableImage2": {
-    "type": "MI",
-    "filename": "faisceau_0",
-    "xBegin": 0.0,
-    "yBegin": 160.0,
-    "xEnd": 900.0,
-    "yEnd": 100.0,
-    "width": 33.0,
-    "height": 320.0,
-    "modifiedWidth": 33.0,
-    "modifiedHeight": 500.0,
-    "speedMultiplicator": 0.5,
-    "loop": true,
-    "anchor": ""
-  },
-  "waiting13": {
-    "type": "WA",
-    "duration": 1
-  },
-  "batteryLevel": {
-    "type": "SP",
-    "filename": "battery_full",
-    "x": 800.0,
-    "y": 33.0,
-    "originWidth": 44.0,
-    "originHeight": 27.0,
-    "width": 44.0,
-    "height": 27.0,
-    "anchor": "topLeft",
-    "isTapable": false
-  },
-  "waiting14": {
-    "type": "WA",
-    "duration": 1
-  },
-  "date": {
-    "type": "DT",
-    "x": 600.0,
-    "y": 35.0,
-    "fontSize": 20.0,
-    "color": "white",
-    "anchor": "topLeft"
-  },
-  "waiting15": {
-    "type": "WA",
-    "duration": 1
-  },
-  "stress": {
-    "type": "TC",
-    "text": "Stress Status : 25/100",
-    "x": 150.0,
-    "y": 35.0,
-    "fontSize": 20.0,
-    "color": "white",
-    "anchor": "topLeft"
-  },
-  "waiting16": {
-    "type": "WA",
-    "duration": 1
-  },
-  "oeil": {
-    "type": "AI",
-    "filename": "oeil_",
-    "nbImage": 11,
-    "loop": true,
-    "x": 0.0,
-    "y": 0.0,
-    "framerate": 0.1,
-    "duration": 16,
-    "imageWidth": 80.0,
-    "imageHeight": 92.0,
-    "sizeMultiplicator": 1.3,
-    "isTapable": false,
-    "anchor": "topLeft"
-  },
-  "waiting17": {
-    "type": "WA",
-    "duration": 3
-  },
-  "animationEkg": {
-    "type": "AI",
-    "filename": "ekg_",
-    "nbImage": 30,
-    "loop": true,
-    "x": 0.0,
-    "y": 330.0,
-    "framerate": 0.05,
-    "duration": 16,
-    "imageWidth": 480.0,
-    "imageHeight": 80.0,
-    "modifiedWidth": 900.0,
-    "modifiedHeight": 80.0,
-    "isTapable": false,
-    "anchor": "topLeft"
-  },
-  "stopRead13": {
-    "type": "SR"
-  },
   "startButton": {
     "type": "SP",
     "filename": "start",
@@ -377,7 +266,7 @@
   "scanButton": {
     "type": "SP",
     "filename": "scanButton",
-    "x": 700.0,
+    "x": 800.0,
     "y": 300.0,
     "originWidth": 79.0,
     "originHeight": 191.0,
@@ -401,7 +290,7 @@
   "fingerPrint": {
     "type": "SP",
     "filename": "fingerPrint",
-    "x": 700.0,
+    "x": 800.0,
     "y": 300.0,
     "originWidth": 85.0,
     "originHeight": 197.0,
@@ -569,5 +458,160 @@
   },
   "removeAllElement4": {
     "type": "RMA"
+  },
+  "grille2": {
+    "type": "SP",
+    "filename": "grille_25",
+    "x": 0.0,
+    "y": 0.0,
+    "originWidth": 480.0,
+    "originHeight": 320.0,
+    "width": 900.0,
+    "height": 410.0,
+    "anchor": "topLeft",
+    "sizeMultiplicator": 1.3,
+    "isTapable": false
+  },
+  "movableImage2": {
+    "type": "MI",
+    "filename": "faisceau_0",
+    "xBegin": 0.0,
+    "yBegin": 160.0,
+    "xEnd": 900.0,
+    "yEnd": 100.0,
+    "width": 33.0,
+    "height": 320.0,
+    "modifiedWidth": 33.0,
+    "modifiedHeight": 500.0,
+    "speedMultiplicator": 0.5,
+    "loop": true,
+    "anchor": ""
+  },
+  "waiting13": {
+    "type": "WA",
+    "duration": 1
+  },
+  "camera": {
+    "type": "CA",
+    "activate": true
+  },
+  "batteryLevel": {
+    "type": "SP",
+    "filename": "battery_full",
+    "x": 800.0,
+    "y": 33.0,
+    "originWidth": 44.0,
+    "originHeight": 27.0,
+    "width": 44.0,
+    "height": 27.0,
+    "anchor": "topLeft",
+    "isTapable": false
+  },
+  "waiting14": {
+    "type": "WA",
+    "duration": 1
+  },
+  "date": {
+    "type": "DT",
+    "x": 600.0,
+    "y": 35.0,
+    "fontSize": 20.0,
+    "color": "white",
+    "anchor": "topLeft"
+  },
+  "waiting15": {
+    "type": "WA",
+    "duration": 1
+  },
+  "stress": {
+    "type": "TC",
+    "text": "Stress Status : 25/100",
+    "x": 150.0,
+    "y": 35.0,
+    "fontSize": 20.0,
+    "color": "white",
+    "anchor": "topLeft"
+  },
+  "waiting16": {
+    "type": "WA",
+    "duration": 1
+  },
+  "oeil": {
+    "type": "AI",
+    "filename": "oeil_",
+    "nbImage": 11,
+    "loop": true,
+    "x": 0.0,
+    "y": 0.0,
+    "framerate": 0.1,
+    "duration": 16,
+    "imageWidth": 80.0,
+    "imageHeight": 92.0,
+    "sizeMultiplicator": 1.3,
+    "isTapable": false,
+    "anchor": "topLeft"
+  },
+  "waiting17": {
+    "type": "WA",
+    "duration": 3
+  },
+  "animationEkg": {
+    "type": "AI",
+    "filename": "ekg_",
+    "nbImage": 30,
+    "loop": true,
+    "x": 0.0,
+    "y": 330.0,
+    "framerate": 0.05,
+    "duration": 16,
+    "imageWidth": 480.0,
+    "imageHeight": 80.0,
+    "modifiedWidth": 900.0,
+    "modifiedHeight": 80.0,
+    "isTapable": false,
+    "anchor": "topLeft"
+  },
+  "sound11": {
+    "type": "SO",
+    "filename": "Ames_coeur_01",
+    "loop": false,
+    "volume": 100
+  },
+  "sound12": {
+    "type": "SO",
+    "filename": "Diane_Bonjour",
+    "loop": false,
+    "volume": 100
+  },
+  "waiting18": {
+    "type": "WA",
+    "duration": 8
+  },
+  "sound13": {
+    "type": "SO",
+    "filename": "Diane_Noir_total",
+    "loop": false,
+    "volume": 100
+  },
+  "waiting19": {
+    "type": "WA",
+    "duration": 21
+  },
+  "sound14": {
+    "type": "SO",
+    "filename": "Diane_Message_scan",
+    "loop": false,
+    "volume": 100
+  },
+  "waiting20": {
+    "type": "WA",
+    "duration": 47
+  },
+  "torch": {
+    "type": "TL",
+    "activate": true
+  },
+  "stopRead13": {
+    "type": "SR"
   }
 }

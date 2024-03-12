@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:ames/core/enum/gamemode_name.dart';
 import 'package:ames/core/flame/components/datetime_text.dart';
+import 'package:ames/core/json_parser/custom_type/ames_torchlight.dart';
 import 'package:ames/core/json_parser/custom_type/camera.dart';
 import 'package:ames/core/json_parser/custom_type/gamemode.dart';
 import 'package:ames/core/json_parser/custom_type/stop_sound.dart';
@@ -18,6 +19,7 @@ import 'package:flame/components.dart';
 import 'package:flame/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:torch_light/torch_light.dart';
 
 class JsonParser {
   late Map<String, dynamic> jsonMap;
@@ -65,10 +67,10 @@ class JsonParser {
               widget = buildDateTimeText(map);
             case 'CA':
               widget = buildCameraState(map);
+            case 'TL':
+              widget = buildTorchlight(map);
             case 'CH':
               widget = checkHeadphone(map);
-            case 'CL':
-              widget = checkLight(map);
             case 'WA':
               widget = Waiting(duration: map["duration"]);
             default:
@@ -214,6 +216,10 @@ class JsonParser {
 
   Camera buildCameraState(Map<String, dynamic> map) {
     return Camera(activate: map['activate']);
+  }
+
+  AmesTorchlight buildTorchlight(Map<String, dynamic> map) {
+    return AmesTorchlight(activate: map['activate']);
   }
 
   checkHeadphone(Map<String, dynamic> map) {}

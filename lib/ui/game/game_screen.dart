@@ -10,37 +10,38 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class GameScreen extends StatelessWidget {
   GameScreen({super.key});
 
-  final cubit = GameCubit();
+  // final cubit = GameCubit();
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GameCubit, GameState>(
-      bloc: cubit,
-      builder: (context, state) {
-        if (state is GameInitial) {
-          cubit.initialize(context);
-          return CircularProgressIndicator();
-        } else if (state is GameLoaded) {
-          if (state.activateCamera == false) {
-            return Scaffold(
-              backgroundColor: Color(0xffece1cd),
-              body: state.gameWidget,
-            );
-          } else if (state.cameraController != null) {
-            return Scaffold(
-              backgroundColor: Color(0xffece1cd),
-              body: CameraPreview(
-                state.cameraController!,
-                child: state.gameWidget,
-              ),
+    return BlocProvider(
+      create: (context) => GameCubit(),
+      child: BlocBuilder<GameCubit, GameState>(
+        builder: (context, state) {
+          if (state is GameInitial) {
+            BlocProvider.of<GameCubit>(context).initialize(context);
+            return CircularProgressIndicator();
+          } else if (state is GameLoaded) {
+            return GameWidget(
+              game: state.gameManager,
+              backgroundBuilder: state.activateCamera == true
+                  ? (context) {
+                      return Scaffold(
+                        body: SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: CameraPreview(
+                            state.cameraController,
+                          ),
+                        ),
+                      );
+                    }
+                  : null,
             );
           } else {
             return Text("ERROR");
           }
-        } else {
-          return Text("ERROR");
-        }
-      },
+        },
+      ),
     );
   }
 }

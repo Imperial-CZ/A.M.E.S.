@@ -6,8 +6,8 @@ class TorchLightHelper {
   Future<void> enableTorch() async {
     try {
       await TorchLight.enableTorch();
-    } on Exception catch (_) {
-      print('Could not enable Flashlight');
+    } on Exception catch (error) {
+      print('Could not enable Flashlight ERROR : ' + error.toString());
     }
   }
 

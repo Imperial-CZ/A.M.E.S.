@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:ames/core/enum/gamemode_name.dart';
+import 'package:ames/core/helpers/torch_light_helper.dart';
+import 'package:ames/core/json_parser/custom_type/ames_torchlight.dart';
 import 'package:ames/core/json_parser/custom_type/camera.dart';
 import 'package:ames/core/json_parser/custom_type/gamemode.dart';
 import 'package:ames/core/json_parser/custom_type/sound.dart';
@@ -31,6 +33,7 @@ class GameManager extends FlameGame with TapDetector {
   });
 
   JsonParser jsonParser;
+  TorchLightHelper torchlight = TorchLightHelper();
   BuildContext context;
 
   Map<String, AudioPlayer> audioPlayers = {};
@@ -64,7 +67,7 @@ class GameManager extends FlameGame with TapDetector {
       dynamic element =
           jsonParser.widgetQueue.values.elementAt(currentPosition);
 
-      BlocProvider.of<GameCubit>(context).changeCameraState(true);
+      // BlocProvider.of<GameCubit>(context).changeCameraState(true);
 
       if (element is Waiting) {
         await Future.delayed(
@@ -83,6 +86,14 @@ class GameManager extends FlameGame with TapDetector {
       } else if (element is RemoveAll) {
         removeAllComponent();
       } else if (element is Camera) {
+        BlocProvider.of<GameCubit>(context).changeCameraState(element.activate);
+      } else if (element is AmesTorchlight) {
+        if (torchlight.isTorchAvailable == false) {
+          torchlight.enableTorch();
+        } else {
+          torchlight.disableTorch();
+        }
+        TorchLightHelper().enableTorch();
       } else if (element is CustomSprite ||
           element is AnimatedImage ||
           element is TextComponent ||
