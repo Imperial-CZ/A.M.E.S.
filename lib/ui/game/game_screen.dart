@@ -20,7 +20,9 @@ class GameScreen extends StatelessWidget {
         builder: (context, state) {
           if (state is GameInitial) {
             BlocProvider.of<GameCubit>(context).initialize(context);
-            return CircularProgressIndicator();
+            return const Scaffold(
+              backgroundColor: Colors.black,
+            );
           } else if (state is GameLoaded) {
             return GameWidget(
               game: state.gameManager,

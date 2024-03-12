@@ -266,7 +266,7 @@
   "scanButton": {
     "type": "SP",
     "filename": "scanButton",
-    "x": 800.0,
+    "x": 750.0,
     "y": 300.0,
     "originWidth": 79.0,
     "originHeight": 191.0,
@@ -290,7 +290,7 @@
   "fingerPrint": {
     "type": "SP",
     "filename": "fingerPrint",
-    "x": 800.0,
+    "x": 750.0,
     "y": 300.0,
     "originWidth": 85.0,
     "originHeight": 197.0,
@@ -305,9 +305,9 @@
   "movableImage": {
     "type": "MI",
     "filename": "scanEmpreinte_0",
-    "xBegin": 700.0,
+    "xBegin": 750.0,
     "yBegin": 200.0,
-    "xEnd": 700.0,
+    "xEnd": 750.0,
     "yEnd": 500.0,
     "width": 131.0,
     "height": 73.0,
