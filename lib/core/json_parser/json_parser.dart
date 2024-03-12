@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:ames/core/enum/gamemode_name.dart';
 import 'package:ames/core/json_parser/custom_type/gameplay.dart';
+import 'package:ames/core/json_parser/custom_type/stop_sound.dart';
 import 'package:ames/core/json_parser/custom_type/waiting.dart';
 import 'package:ames/core/flame/components/animated_image.dart';
 import 'package:ames/core/flame/components/animated_text.dart';
@@ -56,6 +57,10 @@ class JsonParser {
               widget = buildRemove(map);
             case 'SO':
               widget = buildSound(map);
+            case 'STS':
+              widget = buildStopSound(map);
+            case 'DT':
+              widget = buildDateTimeText(map);
             case 'CH':
               widget = checkHeadphone(map);
             case 'CL':
@@ -107,10 +112,13 @@ class JsonParser {
       nbImage: map['nbImage'], //? compteur
       loop: map['loop'], //? true / false => animation en boucle ou non
       imageSize: Vector2(map['imageWidth'], map['imageHeight']),
-      sizeMultiplicator: map["sizeMultiplicator"],
+      modifiedImageSize:
+          makeImageSize(map['modifiedWidth'], map['modifiedHeight']),
+      sizeMultiplicator: map["sizeMultiplicator"] ?? 1.0,
       coord: Vector2(map['x'], map['y']),
       frameRate: map['framerate'],
       activateCallback: map['isTapable'],
+      anchorInput: parseAnchor(map['anchor'] ?? ""),
     );
   }
 
@@ -118,7 +126,9 @@ class JsonParser {
     return CustomSprite(
       path: map['filename'],
       coord: Vector2(map['x'], map['y']),
-      imageSize: Vector2(map['width'], map['height']),
+      imageOrigineSize: Vector2(map['originWidth'], map['originHeight']),
+      modifiedImageSize: makeImageSize(map['width'], map['height']),
+      sizeMultiplicator: map['sizeMultiplicator'] ?? 1.0,
       anchorInput: parseAnchor(map['anchor']),
       activateCallback: map['isTapable'],
       onClickButtonEvent: parseButtonEvent(map['eventName']),
@@ -127,12 +137,16 @@ class JsonParser {
 
   MovableImage buildMovableImage(Map<String, dynamic> map) {
     return MovableImage(
-        path: map['filename'],
-        initialCoord: Vector2(map['xBegin'], map['yBegin']),
-        finalCoord: Vector2(map['xEnd'], map['yEnd']),
-        imageSize: Vector2(map['width'], map['height']),
-        anchorInput: parseAnchor(map['anchor']),
-        speedMultiplicator: map['speedMultiplicator']);
+      path: map['filename'],
+      initialCoord: Vector2(map['xBegin'], map['yBegin']),
+      finalCoord: Vector2(map['xEnd'], map['yEnd']),
+      imageSize: Vector2(map['width'], map['height']),
+      modifiedImageSize:
+          makeImageSize(map['modifiedWidth'], map['modifiedHeight']),
+      anchorInput: parseAnchor(map['anchor']),
+      speedMultiplicator: map['speedMultiplicator'],
+      loop: map['loop'],
+    );
   }
 
   Gamemode buildGameplay(Map<String, dynamic> map) {
@@ -172,10 +186,29 @@ class JsonParser {
 
   Sound buildSound(Map<String, dynamic> map) {
     return Sound(
-        filename: map['filename'],
-        duration: map['duration'],
-        loop: map['loop'],
-        volume: map['volume']);
+      filename: map['filename'],
+      loop: map['loop'],
+      volume: map['volume'],
+    );
+  }
+
+  StopSound buildStopSound(Map<String, dynamic> map) {
+    return StopSound(name: map['name']);
+  }
+
+  TextComponent buildDateTimeText(Map<String, dynamic> map) {
+    DateTime datetime = DateTime.now();
+    return TextComponent(
+        text:
+            "${datetime.day}/${datetime.month}/${datetime.year} ${datetime.hour}:${datetime.minute}",
+        position: Vector2(map['x'], map['y']),
+        anchor: parseAnchor(map['anchor']),
+        textRenderer: TextPaint(
+          style: TextStyle(
+            color: parseColor(map['color']),
+            fontSize: map['fontSize'], //? type : Double
+          ),
+        ));
   }
 
   checkHeadphone(Map<String, dynamic> map) {}
@@ -232,5 +265,13 @@ class JsonParser {
     }
 
     return Colors.white;
+  }
+
+  Vector2? makeImageSize(double? width, double? height) {
+    if (width == null || height == null) {
+      return null;
+    } else {
+      return Vector2(width, height);
+    }
   }
 }

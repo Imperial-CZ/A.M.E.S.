@@ -4,8 +4,8 @@
     "filename": "start",
     "x": 750.0,
     "y": 340.0,
-    "width": 150.0,
-    "height": 92.0,
+    "originWidth": 150.0,
+    "originHeight": 92.0,
     "anchor": "",
     "isTapable": true,
     "eventName": "continueDraw"
@@ -25,17 +25,19 @@
   "removeAllElement": {
     "type": "RMA"
   },
-  "gamemode1": {
-    "type": "GM",
-    "name": "onClickOnScreenContinueDrawEvent"
+  "sound": {
+    "type": "SO",
+    "filename": "Ames_musique_intro",
+    "loop": false,
+    "volume": 100
   },
   "imageBoot": {
     "type": "SP",
     "filename": "imageBoot",
     "x": 450.0,
     "y": 160.0,
-    "width": 480.0,
-    "height": 320.0,
+    "originWidth": 480.0,
+    "originHeight": 320.0,
     "anchor": "",
     "isTapable": false
   },
@@ -54,12 +56,24 @@
     "duration": 16,
     "imageWidth": 480.0,
     "imageHeight": 320.0,
-    "sizeMultiplicator": 1.3,
-    "isTapable": false
+    "modifiedWidth": 900.0,
+    "modifiedHeight": 480.0,
+    "isTapable": false,
+    "anchor": "topLeft"
   },
   "waiting2": {
     "type": "WA",
     "duration": 3
+  },
+  "gamemode1": {
+    "type": "GM",
+    "name": "onClickOnScreenContinueDrawEvent"
+  },
+  "sound1": {
+    "type": "SO",
+    "filename": "Ames_text_beep",
+    "loop": false,
+    "volume": 100
   },
   "introText1": {
     "type": "AT",
@@ -79,6 +93,12 @@
   "removeElement1": {
     "type": "RM",
     "name": "introText1"
+  },
+  "sound2": {
+    "type": "SO",
+    "filename": "Ames_text_beep",
+    "loop": false,
+    "volume": 100
   },
   "introText2": {
     "type": "AT",
@@ -103,6 +123,12 @@
     "type": "GM",
     "name": "empty"
   },
+  "sound3": {
+    "type": "SO",
+    "filename": "Ames_text_beep",
+    "loop": false,
+    "volume": 100
+  },
   "introText3": {
     "type": "AT",
     "text": "Nous allons maintenant procéder à quelques étapes préparatoires pour le\ntest. Veuillez répondre aux questions suivantes. Confirmez vous que vous\nêtes bien à votre domicile ?",
@@ -124,8 +150,8 @@
     "filename": "yes",
     "x": 200.0,
     "y": 340.0,
-    "width": 150.0,
-    "height": 92.0,
+    "originWidth": 150.0,
+    "originHeight": 92.0,
     "anchor": "",
     "isTapable": true,
     "eventName": "continueDraw"
@@ -135,8 +161,8 @@
     "filename": "no",
     "x": 700.0,
     "y": 340.0,
-    "width": 150.0,
-    "height": 92.0,
+    "originWidth": 150.0,
+    "originHeight": 92.0,
     "anchor": "",
     "isTapable": true,
     "eventName": "killApp"
@@ -155,6 +181,12 @@
   "removeElement5": {
     "type": "RM",
     "name": "noButton"
+  },
+  "sound4": {
+    "type": "SO",
+    "filename": "Ames_text_beep",
+    "loop": false,
+    "volume": 100
   },
   "introText4": {
     "type": "AT",
@@ -177,8 +209,8 @@
     "filename": "yes",
     "x": 200.0,
     "y": 340.0,
-    "width": 150.0,
-    "height": 92.0,
+    "originWidth": 150.0,
+    "originHeight": 92.0,
     "anchor": "",
     "isTapable": true,
     "eventName": "continueDraw"
@@ -188,8 +220,8 @@
     "filename": "no",
     "x": 700.0,
     "y": 340.0,
-    "width": 150.0,
-    "height": 92.0,
+    "originWidth": 150.0,
+    "originHeight": 92.0,
     "anchor": "",
     "isTapable": true,
     "eventName": "killApp"
@@ -208,6 +240,12 @@
   "removeElement8": {
     "type": "RM",
     "name": "noButton2"
+  },
+  "sound5": {
+    "type": "SO",
+    "filename": "Ames_text_beep",
+    "loop": false,
+    "volume": 100
   },
   "introText5": {
     "type": "AT",
@@ -230,8 +268,8 @@
     "filename": "scanButton",
     "x": 700.0,
     "y": 300.0,
-    "width": 79.0,
-    "height": 191.0,
+    "originWidth": 79.0,
+    "originHeight": 191.0,
     "anchor": "",
     "isTapable": true,
     "eventName": "continueDraw"
@@ -243,20 +281,26 @@
     "type": "RM",
     "name": "scanButton"
   },
+  "sound6": {
+    "type": "SO",
+    "filename": "Ames_scan_empreinte",
+    "loop": false,
+    "volume": 100
+  },
   "fingerPrint": {
     "type": "SP",
     "filename": "fingerPrint",
     "x": 700.0,
     "y": 300.0,
-    "width": 85.0,
-    "height": 197.0,
+    "originWidth": 85.0,
+    "originHeight": 197.0,
     "anchor": "",
     "isTapable": false,
     "eventName": "empty"
   },
   "waiting6": {
     "type": "WA",
-    "duration": 3
+    "duration": 1
   },
   "movableImage": {
     "type": "MI",
@@ -268,6 +312,7 @@
     "width": 131.0,
     "height": 73.0,
     "speedMultiplicator": 2.0,
+    "loop": false,
     "anchor": ""
   },
   "waiting7": {
@@ -276,5 +321,205 @@
   },
   "removeAllElement2": {
     "type": "RMA"
+  },
+  "sound7": {
+    "type": "SO",
+    "filename": "Ames_sonnerie",
+    "loop": true,
+    "volume": 100
+  },
+  "appel": {
+    "type": "SP",
+    "filename": "appel",
+    "x": 415.0,
+    "y": 240.0,
+    "originWidth": 480.0,
+    "originHeight": 320.0,
+    "sizeMultiplicator": 1.5,
+    "anchor": "",
+    "isTapable": false,
+    "eventName": "empty"
+  },
+  "refuseButton": {
+    "type": "SP",
+    "filename": "refuse",
+    "x": 200.0,
+    "y": 330.0,
+    "originWidth": 202.0,
+    "originHeight": 80.0,
+    "anchor": "",
+    "isTapable": true,
+    "eventName": "killApp"
+  },
+  "answerButton": {
+    "type": "SP",
+    "filename": "answer",
+    "x": 625.0,
+    "y": 330.0,
+    "originWidth": 202.0,
+    "originHeight": 80.0,
+    "anchor": "",
+    "isTapable": true,
+    "eventName": "continueDraw"
+  },
+  "stopRead12": {
+    "type": "SR"
+  },
+  "stopSound": {
+    "type": "STS",
+    "name": "sound7"
+  },
+  "removeAllElement3": {
+    "type": "RMA"
+  },
+  "title": {
+    "type": "SP",
+    "filename": "imageBoot",
+    "x": 450.0,
+    "y": 160.0,
+    "originWidth": 480.0,
+    "originHeight": 320.0,
+    "anchor": "",
+    "isTapable": false
+  },
+  "waiting9": {
+    "type": "WA",
+    "duration": 1
+  },
+  "sound8": {
+    "type": "SO",
+    "filename": "Ames_bruit",
+    "loop": false,
+    "volume": 100
+  },
+  "waiting8": {
+    "type": "WA",
+    "duration": 4
+  },
+  "removeElement10": {
+    "type": "RM",
+    "name": "title"
+  },
+  "flash": {
+    "type": "AI",
+    "filename": "bruit_",
+    "nbImage": 28,
+    "loop": false,
+    "x": 0.0,
+    "y": 0.0,
+    "framerate": 0.1,
+    "duration": 16,
+    "imageWidth": 480.0,
+    "imageHeight": 320.0,
+    "modifiedWidth": 900.0,
+    "modifiedHeight": 410.0,
+    "isTapable": false,
+    "anchor": "topLeft"
+  },
+  "waiting10": {
+    "type": "WA",
+    "duration": 5
+  },
+  "sound9": {
+    "type": "SO",
+    "filename": "Ames_Bruit_de_fonctionnement",
+    "loop": false,
+    "volume": 100
+  },
+  "waiting11": {
+    "type": "WA",
+    "duration": 2
+  },
+  "sound10": {
+    "type": "SO",
+    "filename": "Ames_affichage_grille",
+    "loop": false,
+    "volume": 100
+  },
+  "grille": {
+    "type": "AI",
+    "filename": "grille_",
+    "nbImage": 26,
+    "loop": false,
+    "x": 0.0,
+    "y": 0.0,
+    "framerate": 0.1,
+    "duration": 16,
+    "imageWidth": 480.0,
+    "imageHeight": 320.0,
+    "modifiedWidth": 900.0,
+    "modifiedHeight": 410.0,
+    "isTapable": false,
+    "anchor": "topLeft"
+  },
+  "waiting12": {
+    "type": "WA",
+    "duration": 3
+  },
+  "removeAllElement4": {
+    "type": "RMA"
+  },
+  "grille2": {
+    "type": "SP",
+    "filename": "grille_25",
+    "x": 0.0,
+    "y": 0.0,
+    "originWidth": 480.0,
+    "originHeight": 320.0,
+    "width": 900.0,
+    "height": 410.0,
+    "anchor": "topLeft",
+    "sizeMultiplicator": 1.3,
+    "isTapable": false
+  },
+  "movableImage2": {
+    "type": "MI",
+    "filename": "faisceau_0",
+    "xBegin": 0.0,
+    "yBegin": 160.0,
+    "xEnd": 900.0,
+    "yEnd": 100.0,
+    "width": 33.0,
+    "height": 320.0,
+    "modifiedWidth": 33.0,
+    "modifiedHeight": 500.0,
+    "speedMultiplicator": 0.5,
+    "loop": true,
+    "anchor": ""
+  },
+  "oeil": {
+    "type": "AI",
+    "filename": "oeil_",
+    "nbImage": 11,
+    "loop": true,
+    "x": 0.0,
+    "y": 0.0,
+    "framerate": 0.1,
+    "duration": 16,
+    "imageWidth": 80.0,
+    "imageHeight": 92.0,
+    "sizeMultiplicator": 1.3,
+    "isTapable": false,
+    "anchor": "topLeft"
+  },
+  "stress": {
+    "type": "TC",
+    "text": "Stress Status : 25/100",
+    "x": 150.0,
+    "y": 35.0,
+    "fontSize": 20.0,
+    "color": "white",
+    "anchor": "topLeft"
+  },
+  "date": {
+    "type": "DT",
+    "x": 450.0,
+    "y": 35.0,
+    "fontSize": 20.0,
+    "color": "white",
+    "anchor": "topLeft"
+  },
+  "stopRead13": {
+    "type": "SR"
   }
 }

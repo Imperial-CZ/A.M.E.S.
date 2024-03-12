@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:io';
 import 'package:ames/core/enum/gamemode_name.dart';
 import 'package:ames/core/json_parser/custom_type/gameplay.dart';
+import 'package:ames/core/json_parser/custom_type/sound.dart';
+import 'package:ames/core/json_parser/custom_type/stop_sound.dart';
 import 'package:ames/core/json_parser/json_parser.dart';
 import 'package:ames/core/json_parser/custom_type/waiting.dart';
 import 'package:ames/core/flame/components/animated_image.dart';
@@ -16,11 +18,15 @@ import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flame/src/gestures/events.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class GameManager extends FlameGame with TapDetector {
   GameManager({required this.jsonParser});
 
   JsonParser jsonParser;
+
+  Map<String, AudioPlayer> audioPlayers = {};
+
   var gamemode = GamemodeName.empty;
   List<String> elementsOnScreen = [];
   int currentPosition = 0;
@@ -74,6 +80,20 @@ class GameManager extends FlameGame with TapDetector {
         elementsOnScreen
             .add(jsonParser.widgetQueue.keys.elementAt(currentPosition));
         add(element as Component);
+      } else if (element is Sound) {
+        String jsonParserElementName =
+            jsonParser.widgetQueue.keys.elementAt(currentPosition);
+        audioPlayers.addAll({jsonParserElementName: AudioPlayer()});
+        AssetSource source = AssetSource("sounds/${element.filename}.mp3");
+        audioPlayers[jsonParserElementName]!.play(source);
+        if (element.loop == true) {
+          audioPlayers[jsonParserElementName]!.setReleaseMode(ReleaseMode.loop);
+        }
+      } else if (element is StopSound) {
+        if (audioPlayers[element.name] != null) {
+          audioPlayers[element.name]!.setReleaseMode(ReleaseMode.stop);
+          audioPlayers[element.name]!.dispose();
+        }
       }
     }
   }
@@ -141,7 +161,18 @@ class GameManager extends FlameGame with TapDetector {
   }
 
   void onClickOnScreenContinueDrawEvent(Vector2 tapPosition) {
-    if (isReadStop == true) {
+    bool animatedTextEncounterNotRender = false;
+    for (int i = 0; i != elementsOnScreen.length; i++) {
+      if (jsonParser.widgetQueue[elementsOnScreen[i]] is AnimatedText &&
+          (jsonParser.widgetQueue[elementsOnScreen[i]] as AnimatedText)
+                  .isRenderFinish ==
+              false) {
+        animatedTextEncounterNotRender = true;
+        (jsonParser.widgetQueue[elementsOnScreen[i]] as AnimatedText).printAll =
+            true;
+      }
+    }
+    if (isReadStop == true && animatedTextEncounterNotRender == false) {
       isReadStop = false;
       continueDraw();
     }

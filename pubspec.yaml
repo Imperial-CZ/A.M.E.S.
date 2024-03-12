@@ -23,6 +23,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/
+    - assets/sounds/
     - assets/images/
-    - assets/scene_1.json
-    - assets/script.json

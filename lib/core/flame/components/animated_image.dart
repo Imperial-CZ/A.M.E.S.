@@ -10,10 +10,12 @@ class AnimatedImage extends SpriteComponent
   int nbImage;
   bool loop;
   Vector2 imageSize;
+  Vector2? modifiedImageSize;
   double sizeMultiplicator;
   Vector2 coord;
   double frameRate;
   bool activateCallback;
+  Anchor? anchorInput;
 
   int nextImage = 0;
   double timeCount = 0;
@@ -24,6 +26,8 @@ class AnimatedImage extends SpriteComponent
     required this.nbImage,
     required this.loop,
     required this.imageSize,
+    this.modifiedImageSize,
+    this.anchorInput,
     required this.sizeMultiplicator,
     required this.frameRate,
     required this.coord,
@@ -40,15 +44,16 @@ class AnimatedImage extends SpriteComponent
       "$fileName$nextImage.png",
       srcSize: imageSize,
     );
-    nextImage++;
 
-    double x = (gameRef.size.toRect().width / 2).toDouble() + coord[0];
-    double y = (gameRef.size.toRect().height / 2).toDouble() + coord[1];
-
-    width = imageSize[0] * sizeMultiplicator;
-    height = imageSize[1] * sizeMultiplicator;
-    position = Vector2(x, y);
-    anchor = Anchor.center;
+    if (modifiedImageSize != null) {
+      width = modifiedImageSize![0];
+      height = modifiedImageSize![1];
+    } else {
+      width = imageSize[0] * sizeMultiplicator;
+      height = imageSize[1] * sizeMultiplicator;
+    }
+    position = coord;
+    anchor = anchorInput ?? Anchor.center;
   }
 
   @override
@@ -62,20 +67,18 @@ class AnimatedImage extends SpriteComponent
   void update(double dt) async {
     super.update(dt);
     timeCount += dt;
-    if (timeCount >= frameRate && nextImage < nbImage) {
-      print("nextImage : " + nextImage.toString());
+    if (timeCount >= frameRate && nextImage + 1 < nbImage) {
+      nextImage++;
+      print("image : " + nextImage.toString());
       sprite = await Sprite.load(
         "$fileName$nextImage.png",
         srcSize: imageSize,
       );
-      nextImage++;
       timeCount = 0;
-    } else if (timeCount >= frameRate && nextImage >= nbImage) {
-      if (loop = false) {
-        removeFromParent();
-      } else {
-        nextImage = 0;
-      }
+    } else if (timeCount >= frameRate &&
+        nextImage + 1 >= nbImage &&
+        loop == true) {
+      nextImage = 0;
     }
   }
 }

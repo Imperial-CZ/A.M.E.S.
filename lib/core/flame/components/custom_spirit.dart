@@ -11,7 +11,11 @@ class CustomSprite extends SpriteComponent
 
   Vector2 coord;
 
-  Vector2 imageSize;
+  Vector2 imageOrigineSize;
+
+  Vector2? modifiedImageSize;
+
+  double sizeMultiplicator;
 
   Anchor anchorInput;
 
@@ -26,7 +30,9 @@ class CustomSprite extends SpriteComponent
   CustomSprite({
     required this.path,
     required this.coord,
-    required this.imageSize,
+    required this.imageOrigineSize,
+    this.modifiedImageSize,
+    this.sizeMultiplicator = 1.0,
     required this.anchorInput,
     required this.activateCallback,
     required this.onClickButtonEvent,
@@ -37,12 +43,19 @@ class CustomSprite extends SpriteComponent
     await super.onLoad();
     sprite = await Sprite.load(
       "$path.png",
-      srcSize: imageSize,
+      srcSize: imageOrigineSize,
     );
-    width = imageSize[0];
-    height = imageSize[1];
+    if (modifiedImageSize == null) {
+      imageOrigineSize = Vector2(imageOrigineSize.x * sizeMultiplicator,
+          imageOrigineSize.y * sizeMultiplicator);
+      width = imageOrigineSize[0];
+      height = imageOrigineSize[1];
+    } else {
+      width = modifiedImageSize![0];
+      height = modifiedImageSize![1];
+    }
     position = coord;
-    anchor = anchorInput ?? Anchor.center;
+    anchor = anchorInput;
   }
 
   @override

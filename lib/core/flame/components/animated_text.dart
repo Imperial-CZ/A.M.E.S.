@@ -12,6 +12,7 @@ class AnimatedText extends TextComponent with HasGameRef<GameManager> {
   TextRenderer? textRendererInput;
   double? printSpeed;
   bool isRenderFinish = false;
+  bool printAll = false;
 
   double timeCount = 0;
   int letterToPrint = 0;
@@ -53,7 +54,9 @@ class AnimatedText extends TextComponent with HasGameRef<GameManager> {
   void update(double dt) {
     super.update(dt);
     timeCount += dt;
-    if (timeCount >= printSpeed! && letterToPrint <= allText.length) {
+    if (timeCount >= printSpeed! &&
+        isRenderFinish == false &&
+        printAll == false) {
       if (letterToPrint == allText.length) {
         text = allText.characters.getRange(0, letterToPrint).toString();
       } else {
@@ -65,6 +68,9 @@ class AnimatedText extends TextComponent with HasGameRef<GameManager> {
       if (letterToPrint > allText.length) {
         isRenderFinish = true;
       }
+    } else if (printAll == true && isRenderFinish == false) {
+      isRenderFinish = true;
+      text = allText;
     }
   }
 }
