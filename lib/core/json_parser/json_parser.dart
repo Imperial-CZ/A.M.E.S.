@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:ames/core/enum/gamemode_name.dart';
-import 'package:ames/core/json_parser/custom_type/gameplay.dart';
+import 'package:ames/core/flame/components/datetime_text.dart';
+import 'package:ames/core/json_parser/custom_type/camera.dart';
+import 'package:ames/core/json_parser/custom_type/gamemode.dart';
 import 'package:ames/core/json_parser/custom_type/stop_sound.dart';
 import 'package:ames/core/json_parser/custom_type/waiting.dart';
 import 'package:ames/core/flame/components/animated_image.dart';
@@ -61,6 +63,8 @@ class JsonParser {
               widget = buildStopSound(map);
             case 'DT':
               widget = buildDateTimeText(map);
+            case 'CA':
+              widget = buildCameraState(map);
             case 'CH':
               widget = checkHeadphone(map);
             case 'CL':
@@ -197,18 +201,19 @@ class JsonParser {
   }
 
   TextComponent buildDateTimeText(Map<String, dynamic> map) {
-    DateTime datetime = DateTime.now();
-    return TextComponent(
-        text:
-            "${datetime.day}/${datetime.month}/${datetime.year} ${datetime.hour}:${datetime.minute}",
-        position: Vector2(map['x'], map['y']),
-        anchor: parseAnchor(map['anchor']),
-        textRenderer: TextPaint(
+    return DatetimeText(
+        positionInput: Vector2(map['x'], map['y']),
+        anchorInput: parseAnchor(map['anchor']),
+        textRendererInput: TextPaint(
           style: TextStyle(
             color: parseColor(map['color']),
             fontSize: map['fontSize'], //? type : Double
           ),
         ));
+  }
+
+  Camera buildCameraState(Map<String, dynamic> map) {
+    return Camera(activate: map['activate']);
   }
 
   checkHeadphone(Map<String, dynamic> map) {}

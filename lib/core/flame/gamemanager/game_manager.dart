@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:ames/core/enum/gamemode_name.dart';
-import 'package:ames/core/json_parser/custom_type/gameplay.dart';
+import 'package:ames/core/json_parser/custom_type/camera.dart';
+import 'package:ames/core/json_parser/custom_type/gamemode.dart';
 import 'package:ames/core/json_parser/custom_type/sound.dart';
 import 'package:ames/core/json_parser/custom_type/stop_sound.dart';
 import 'package:ames/core/json_parser/json_parser.dart';
@@ -14,16 +15,23 @@ import 'package:ames/core/enum/on_click_button_event.dart';
 import 'package:ames/core/json_parser/custom_type/remove.dart';
 import 'package:ames/core/json_parser/custom_type/remove_all.dart';
 import 'package:ames/core/json_parser/custom_type/stop_read.dart';
+import 'package:ames/ui/game/cubit/game_cubit.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flame/src/gestures/events.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GameManager extends FlameGame with TapDetector {
-  GameManager({required this.jsonParser});
+  GameManager({
+    required this.jsonParser,
+    required this.context,
+  });
 
   JsonParser jsonParser;
+  BuildContext context;
 
   Map<String, AudioPlayer> audioPlayers = {};
 
@@ -56,6 +64,8 @@ class GameManager extends FlameGame with TapDetector {
       dynamic element =
           jsonParser.widgetQueue.values.elementAt(currentPosition);
 
+      BlocProvider.of<GameCubit>(context).changeCameraState(true);
+
       if (element is Waiting) {
         await Future.delayed(
           Duration(
@@ -72,6 +82,7 @@ class GameManager extends FlameGame with TapDetector {
         removeComponent(element.name);
       } else if (element is RemoveAll) {
         removeAllComponent();
+      } else if (element is Camera) {
       } else if (element is CustomSprite ||
           element is AnimatedImage ||
           element is TextComponent ||
