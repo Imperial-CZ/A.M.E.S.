@@ -33,7 +33,6 @@ class GameManager extends FlameGame with TapDetector {
   });
 
   JsonParser jsonParser;
-  TorchLightHelper torchlight = TorchLightHelper();
   BuildContext context;
 
   Map<String, AudioPlayer> audioPlayers = {};
@@ -42,6 +41,7 @@ class GameManager extends FlameGame with TapDetector {
   List<String> elementsOnScreen = [];
   int currentPosition = 0;
   bool isReadStop = false;
+  bool cameraIsActivate = false;
 
   void removeComponent(String componentName, {bool isRemoveAll = false}) {
     if (elementsOnScreen.contains(componentName)) {
@@ -86,14 +86,13 @@ class GameManager extends FlameGame with TapDetector {
       } else if (element is RemoveAll) {
         removeAllComponent();
       } else if (element is Camera) {
+        cameraIsActivate = element.activate;
         BlocProvider.of<GameCubit>(context).changeCameraState(element.activate);
       } else if (element is AmesTorchlight) {
-        if (torchlight.isTorchAvailable == false) {
-          torchlight.enableTorch();
-        } else {
-          torchlight.disableTorch();
+        if (cameraIsActivate == true) {
+          BlocProvider.of<GameCubit>(context)
+              .changeTorchlightState(element.activate);
         }
-        TorchLightHelper().enableTorch();
       } else if (element is CustomSprite ||
           element is AnimatedImage ||
           element is TextComponent ||

@@ -65,4 +65,12 @@ class GameCubit extends Cubit<GameState> {
       ));
     }
   }
+
+  Future<void> changeTorchlightState(bool activateFlash) async {
+    if (activateFlash == true) {
+      controller.setFlashMode(FlashMode.torch);
+    } else {
+      controller.setFlashMode(FlashMode.off);
+    }
+  }
 }
