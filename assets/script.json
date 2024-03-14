@@ -2,68 +2,616 @@
   "startButton": {
     "type": "SP",
     "filename": "start",
-    "x": 150.0,
-    "y": 92.0,
-    "width": 150.0,
-    "height": 92.0,
-    "anchor": ""
+    "x": 750.0,
+    "y": 340.0,
+    "originWidth": 150.0,
+    "originHeight": 92.0,
+    "anchor": "",
+    "isTapable": true,
+    "eventName": "continueDraw"
   },
-  "waiting1": {
-    "type": "WA",
-    "duration": 10
+  "startText1": {
+    "type": "TC",
+    "text": "AMES is ready, press start",
+    "x": 300.0,
+    "y": 150.0,
+    "fontSize": 20.0,
+    "color": "white",
+    "anchor": "topLeft"
+  },
+  "stopRead": {
+    "type": "SR"
+  },
+  "removeAllElement": {
+    "type": "RMA"
+  },
+  "sound": {
+    "type": "SO",
+    "filename": "Ames_musique_intro",
+    "loop": false,
+    "volume": 100
   },
   "imageBoot": {
     "type": "SP",
     "filename": "imageBoot",
-    "x": 480.0,
-    "y": 320.0,
-    "width": 480.0,
-    "height": 320.0,
-    "anchor": ""
+    "x": 450.0,
+    "y": 160.0,
+    "originWidth": 480.0,
+    "originHeight": 320.0,
+    "anchor": "",
+    "isTapable": false
+  },
+  "waiting": {
+    "type": "WA",
+    "duration": 3
   },
   "animationFond": {
     "type": "AI",
     "filename": "fond_",
     "nbImage": 47,
     "loop": true,
-    "x": -500.0,
-    "y": -500.0,
-    "framerate": 1.0,
+    "x": 0.0,
+    "y": 0.0,
+    "framerate": 0.5,
     "duration": 16,
-    "width": 480.0,
-    "height": 320.0
+    "imageWidth": 480.0,
+    "imageHeight": 320.0,
+    "modifiedWidth": 900.0,
+    "modifiedHeight": 480.0,
+    "isTapable": false,
+    "anchor": "topLeft"
+  },
+  "waiting2": {
+    "type": "WA",
+    "duration": 3
+  },
+  "gamemode1": {
+    "type": "GM",
+    "name": "onClickOnScreenContinueDrawEvent"
+  },
+  "sound1": {
+    "type": "SO",
+    "filename": "Ames_text_beep",
+    "loop": false,
+    "volume": 100
   },
   "introText1": {
     "type": "AT",
-    "text": "Bonjour chers utilisateurs de l’A M E S (Amplificateur Mediumnique Extrasensoriel) Version trois point zéro. Vous avez été sélectionné par l’Agence  pour notre programme de recherche sur le potentiel médiumnique de la population.  Vous allez être exposé à des évènements paranormaux.    Tapez pour continuer.",
-    "x": 0.0,
-    "y": 0.0,
+    "text": "Bonjour chers utilisateurs de l'A M E S (Amplificateur Mediumnique\nExtrasensoriel) Version trois point zéro. Vous avez été sélectionné par\nL'Agence pour notre programme de recherche sur le potentiel médiumnique\nde la population.\n\nTapez pour continuer.",
+    "x": 100.0,
+    "y": 150.0,
     "fontSize": 20.0,
-    "color": "0xFFFFFF",
+    "color": "white",
     "duration": 0,
-    "anchor": "",
-    "printSpeed": 0.05
+    "anchor": "topLeft",
+    "printSpeed": 0.05,
+    "isTapable": false
+  },
+  "stopRead1": {
+    "type": "SR"
+  },
+  "removeElement1": {
+    "type": "RM",
+    "name": "introText1"
+  },
+  "sound2": {
+    "type": "SO",
+    "filename": "Ames_text_beep",
+    "loop": false,
+    "volume": 100
   },
   "introText2": {
     "type": "AT",
-    "text": "Bonjour chers utilisateurs de l’A M E S (Amplificateur Mediumnique Extrasensoriel) Version trois point zéro. Vous avez été sélectionné par l’Agence  pour notre programme de recherche sur le potentiel médiumnique de la population.  Vous allez être exposé à des évènements paranormaux.    Tapez pour continuer.",
-    "x": 0.0,
-    "y": 0.0,
+    "text": "Le programme A M E S que vous venez d'installer transforme votre téléphone\nen véritable antenne à auras. Si votre sensibilité médiumnique est assez\nélevée, l'Agence vous recontactera pour de plus amples informations et de\nnouvelles consignes.\n\nTapez pour continuer.",
+    "x": 100.0,
+    "y": 150.0,
     "fontSize": 20.0,
-    "color": "0xFFFFFF",
-    "duration": 0,
-    "anchor": "",
-    "printSpeed": 0.05
+    "color": "white",
+    "duration": 5,
+    "anchor": "topLeft",
+    "printSpeed": 0.05,
+    "isTapable": false
+  },
+  "stopRead2": {
+    "type": "SR"
+  },
+  "removeElement2": {
+    "type": "RM",
+    "name": "introText2"
+  },
+  "gamemode3": {
+    "type": "GM",
+    "name": "empty"
+  },
+  "sound3": {
+    "type": "SO",
+    "filename": "Ames_text_beep",
+    "loop": false,
+    "volume": 100
   },
   "introText3": {
     "type": "AT",
-    "text": "Nous allons maintenant procéder à quelques étapes préparatoires pour le test. Veuillez répondre aux questions suivantes. Confirmez vous que vous êtes bien à votre domicile ?",
+    "text": "Nous allons maintenant procéder à quelques étapes préparatoires pour le\ntest. Veuillez répondre aux questions suivantes. Confirmez vous que vous\nêtes bien à votre domicile ?",
+    "x": 100.0,
+    "y": 150.0,
+    "fontSize": 20.0,
+    "color": "white",
+    "duration": 5,
+    "anchor": "topLeft",
+    "printSpeed": 0.05,
+    "isTapable": false
+  },
+  "waiting3": {
+    "type": "WA",
+    "duration": 10
+  },
+  "yesButton": {
+    "type": "SP",
+    "filename": "yes",
+    "x": 200.0,
+    "y": 340.0,
+    "originWidth": 150.0,
+    "originHeight": 92.0,
+    "anchor": "",
+    "isTapable": true,
+    "eventName": "continueDraw"
+  },
+  "noButton": {
+    "type": "SP",
+    "filename": "no",
+    "x": 700.0,
+    "y": 340.0,
+    "originWidth": 150.0,
+    "originHeight": 92.0,
+    "anchor": "",
+    "isTapable": true,
+    "eventName": "killApp"
+  },
+  "stopRead3": {
+    "type": "SR"
+  },
+  "removeElement3": {
+    "type": "RM",
+    "name": "introText3"
+  },
+  "removeElement4": {
+    "type": "RM",
+    "name": "yesButton"
+  },
+  "removeElement5": {
+    "type": "RM",
+    "name": "noButton"
+  },
+  "sound4": {
+    "type": "SO",
+    "filename": "Ames_text_beep",
+    "loop": false,
+    "volume": 100
+  },
+  "introText4": {
+    "type": "AT",
+    "text": "Merci. Le test que vous allez subir ne doit pas être interrompu. Pouvez vous\négalement confirmer que vous avez une dizaine de minutes devant vous ?",
+    "x": 100.0,
+    "y": 150.0,
+    "fontSize": 20.0,
+    "color": "white",
+    "duration": 5,
+    "anchor": "topLeft",
+    "printSpeed": 0.05,
+    "isTapable": false
+  },
+  "waiting4": {
+    "type": "WA",
+    "duration": 8
+  },
+  "yesButton2": {
+    "type": "SP",
+    "filename": "yes",
+    "x": 200.0,
+    "y": 340.0,
+    "originWidth": 150.0,
+    "originHeight": 92.0,
+    "anchor": "",
+    "isTapable": true,
+    "eventName": "continueDraw"
+  },
+  "noButton2": {
+    "type": "SP",
+    "filename": "no",
+    "x": 700.0,
+    "y": 340.0,
+    "originWidth": 150.0,
+    "originHeight": 92.0,
+    "anchor": "",
+    "isTapable": true,
+    "eventName": "killApp"
+  },
+  "stopRead4": {
+    "type": "SR"
+  },
+  "removeElement6": {
+    "type": "RM",
+    "name": "introText4"
+  },
+  "removeElement7": {
+    "type": "RM",
+    "name": "yesButton2"
+  },
+  "removeElement8": {
+    "type": "RM",
+    "name": "noButton2"
+  },
+  "sound5": {
+    "type": "SO",
+    "filename": "Ames_text_beep",
+    "loop": false,
+    "volume": 100
+  },
+  "introText5": {
+    "type": "AT",
+    "text": "Merci. Si vous acceptez de participer à ce test et acceptez\nles conditions précédemment définies, veuillez appliquer\nvotre pouce sur le lecteur qui apparait à l'écran. Votre\nempreinte digitale fera office de signature.",
+    "x": 100.0,
+    "y": 150.0,
+    "fontSize": 20.0,
+    "color": "white",
+    "duration": 5,
+    "anchor": "topLeft",
+    "printSpeed": 0.05,
+    "isTapable": false
+  },
+  "waiting5": {
+    "type": "WA",
+    "duration": 12
+  },
+  "scanButton": {
+    "type": "SP",
+    "filename": "scanButton",
+    "x": 750.0,
+    "y": 300.0,
+    "originWidth": 79.0,
+    "originHeight": 191.0,
+    "anchor": "",
+    "isTapable": true,
+    "eventName": "continueDraw"
+  },
+  "stopRead5": {
+    "type": "SR"
+  },
+  "removeElement9": {
+    "type": "RM",
+    "name": "scanButton"
+  },
+  "sound6": {
+    "type": "SO",
+    "filename": "Ames_scan_empreinte",
+    "loop": false,
+    "volume": 100
+  },
+  "fingerPrint": {
+    "type": "SP",
+    "filename": "fingerPrint",
+    "x": 750.0,
+    "y": 300.0,
+    "originWidth": 85.0,
+    "originHeight": 197.0,
+    "anchor": "",
+    "isTapable": false,
+    "eventName": "empty"
+  },
+  "waiting6": {
+    "type": "WA",
+    "duration": 1
+  },
+  "movableImage": {
+    "type": "MI",
+    "filename": "scanEmpreinte_0",
+    "xBegin": 750.0,
+    "yBegin": 200.0,
+    "xEnd": 750.0,
+    "yEnd": 500.0,
+    "width": 131.0,
+    "height": 73.0,
+    "speedMultiplicator": 2.0,
+    "loop": false,
+    "anchor": ""
+  },
+  "waiting7": {
+    "type": "WA",
+    "duration": 5
+  },
+  "removeAllElement2": {
+    "type": "RMA"
+  },
+  "sound7": {
+    "type": "SO",
+    "filename": "Ames_sonnerie",
+    "loop": true,
+    "volume": 100
+  },
+  "appel": {
+    "type": "SP",
+    "filename": "appel",
+    "x": 415.0,
+    "y": 240.0,
+    "originWidth": 480.0,
+    "originHeight": 320.0,
+    "sizeMultiplicator": 1.5,
+    "anchor": "",
+    "isTapable": false,
+    "eventName": "empty"
+  },
+  "refuseButton": {
+    "type": "SP",
+    "filename": "refuse",
+    "x": 200.0,
+    "y": 330.0,
+    "originWidth": 202.0,
+    "originHeight": 80.0,
+    "anchor": "",
+    "isTapable": true,
+    "eventName": "killApp"
+  },
+  "answerButton": {
+    "type": "SP",
+    "filename": "answer",
+    "x": 625.0,
+    "y": 330.0,
+    "originWidth": 202.0,
+    "originHeight": 80.0,
+    "anchor": "",
+    "isTapable": true,
+    "eventName": "continueDraw"
+  },
+  "stopRead12": {
+    "type": "SR"
+  },
+  "stopSound": {
+    "type": "STS",
+    "name": "sound7"
+  },
+  "removeAllElement3": {
+    "type": "RMA"
+  },
+  "title": {
+    "type": "SP",
+    "filename": "imageBoot",
+    "x": 450.0,
+    "y": 160.0,
+    "originWidth": 480.0,
+    "originHeight": 320.0,
+    "anchor": "",
+    "isTapable": false
+  },
+  "waiting9": {
+    "type": "WA",
+    "duration": 1
+  },
+  "sound8": {
+    "type": "SO",
+    "filename": "Ames_bruit",
+    "loop": false,
+    "volume": 100
+  },
+  "waiting8": {
+    "type": "WA",
+    "duration": 4
+  },
+  "removeElement10": {
+    "type": "RM",
+    "name": "title"
+  },
+  "flash": {
+    "type": "AI",
+    "filename": "bruit_",
+    "nbImage": 28,
+    "loop": false,
     "x": 0.0,
     "y": 0.0,
+    "framerate": 0.1,
+    "duration": 16,
+    "imageWidth": 480.0,
+    "imageHeight": 320.0,
+    "modifiedWidth": 900.0,
+    "modifiedHeight": 410.0,
+    "isTapable": false,
+    "anchor": "topLeft"
+  },
+  "waiting10": {
+    "type": "WA",
+    "duration": 5
+  },
+  "sound9": {
+    "type": "SO",
+    "filename": "Ames_Bruit_de_fonctionnement",
+    "loop": false,
+    "volume": 100
+  },
+  "waiting11": {
+    "type": "WA",
+    "duration": 2
+  },
+  "sound10": {
+    "type": "SO",
+    "filename": "Ames_affichage_grille",
+    "loop": false,
+    "volume": 100
+  },
+  "grille": {
+    "type": "AI",
+    "filename": "grille_",
+    "nbImage": 26,
+    "loop": false,
+    "x": 0.0,
+    "y": 0.0,
+    "framerate": 0.1,
+    "duration": 16,
+    "imageWidth": 480.0,
+    "imageHeight": 320.0,
+    "modifiedWidth": 900.0,
+    "modifiedHeight": 410.0,
+    "isTapable": false,
+    "anchor": "topLeft"
+  },
+  "waiting12": {
+    "type": "WA",
+    "duration": 3
+  },
+  "removeAllElement4": {
+    "type": "RMA"
+  },
+  "grille2": {
+    "type": "SP",
+    "filename": "grille_25",
+    "x": 0.0,
+    "y": 0.0,
+    "originWidth": 480.0,
+    "originHeight": 320.0,
+    "width": 900.0,
+    "height": 410.0,
+    "anchor": "topLeft",
+    "sizeMultiplicator": 1.3,
+    "isTapable": false
+  },
+  "movableImage2": {
+    "type": "MI",
+    "filename": "faisceau_0",
+    "xBegin": 0.0,
+    "yBegin": 160.0,
+    "xEnd": 900.0,
+    "yEnd": 100.0,
+    "width": 33.0,
+    "height": 320.0,
+    "modifiedWidth": 33.0,
+    "modifiedHeight": 500.0,
+    "speedMultiplicator": 0.5,
+    "loop": true,
+    "anchor": ""
+  },
+  "waiting13": {
+    "type": "WA",
+    "duration": 1
+  },
+  "camera": {
+    "type": "CA",
+    "activate": true
+  },
+  "batteryLevel": {
+    "type": "SP",
+    "filename": "battery_full",
+    "x": 800.0,
+    "y": 33.0,
+    "originWidth": 44.0,
+    "originHeight": 27.0,
+    "width": 44.0,
+    "height": 27.0,
+    "anchor": "topLeft",
+    "isTapable": false
+  },
+  "waiting14": {
+    "type": "WA",
+    "duration": 1
+  },
+  "date": {
+    "type": "DT",
+    "x": 600.0,
+    "y": 35.0,
     "fontSize": 20.0,
-    "color": "0xFFFFFF",
-    "duration": 5,
-    "anchor": "",
-    "printSpeed": 0.05
+    "color": "white",
+    "anchor": "topLeft"
+  },
+  "waiting15": {
+    "type": "WA",
+    "duration": 1
+  },
+  "stress": {
+    "type": "TC",
+    "text": "Stress Status : 25/100",
+    "x": 150.0,
+    "y": 35.0,
+    "fontSize": 20.0,
+    "color": "white",
+    "anchor": "topLeft"
+  },
+  "waiting16": {
+    "type": "WA",
+    "duration": 1
+  },
+  "oeil": {
+    "type": "AI",
+    "filename": "oeil_",
+    "nbImage": 11,
+    "loop": true,
+    "x": 0.0,
+    "y": 0.0,
+    "framerate": 0.1,
+    "duration": 16,
+    "imageWidth": 80.0,
+    "imageHeight": 92.0,
+    "sizeMultiplicator": 1.3,
+    "isTapable": false,
+    "anchor": "topLeft"
+  },
+  "waiting17": {
+    "type": "WA",
+    "duration": 3
+  },
+  "animationEkg": {
+    "type": "AI",
+    "filename": "ekg_",
+    "nbImage": 30,
+    "loop": true,
+    "x": 0.0,
+    "y": 330.0,
+    "framerate": 0.05,
+    "duration": 16,
+    "imageWidth": 480.0,
+    "imageHeight": 80.0,
+    "modifiedWidth": 900.0,
+    "modifiedHeight": 80.0,
+    "isTapable": false,
+    "anchor": "topLeft"
+  },
+  "sound11": {
+    "type": "SO",
+    "filename": "Ames_coeur_01",
+    "loop": false,
+    "volume": 100
+  },
+  "sound12": {
+    "type": "SO",
+    "filename": "Diane_Bonjour",
+    "loop": false,
+    "volume": 100
+  },
+  "waiting18": {
+    "type": "WA",
+    "duration": 8
+  },
+  "sound13": {
+    "type": "SO",
+    "filename": "Diane_Noir_total",
+    "loop": false,
+    "volume": 100
+  },
+  "waiting19": {
+    "type": "WA",
+    "duration": 21
+  },
+  "sound14": {
+    "type": "SO",
+    "filename": "Diane_Message_scan",
+    "loop": false,
+    "volume": 100
+  },
+  "waiting20": {
+    "type": "WA",
+    "duration": 47
+  },
+  "torch": {
+    "type": "TL",
+    "activate": true
+  },
+  "stopRead13": {
+    "type": "SR"
   }
 }

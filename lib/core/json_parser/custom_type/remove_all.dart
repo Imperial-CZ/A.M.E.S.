@@ -1,0 +1,3 @@
+class RemoveAll {
+  RemoveAll();
+}
