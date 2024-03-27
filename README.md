@@ -1,72 +1,22 @@
-## TextComponent
-| nom | type / nom |type | type
-|--|--|--|--
-| text | String |
-| position | Vector2 |
-|  | x | Double	|
-|  | y | Double	|
-| anchor | String | -> center...
-| textRenderer | TextPaint |
-|  | style | TextStyle	|
-|  |  | color	| Color(#HEXA)
-|  |  | fontSize	| Double
+## A.M.E.S
 
-## AnimatedText
-| nom | type / nom |type | type
-|--|--|--|--
-| text | String |
-| position | Vector2 |
-|  | x | Double	|
-|  | y | Double	|
-| anchor | String | -> center...
-| textRenderer | TextPaint |
-|  | style | TextStyle	|
-|  |  | color	| Color(#HEXA)
-|  |  | fontSize	| Double
+A.M.E.S est un jeu d'horreur créé par [@Jean-Philippe Farrugia](https://github.com/jpfarrug), ce projet a pour but de faire rennaitre des ses cendres ce jeu vidéo crée d'origine en [Objective-C](https://fr.wikipedia.org/wiki/Objective-C), en faisant une réécriture cross-platforme [Android](https://www.android.com/)/[IOS](https://www.apple.com/fr/ios/) grace au SDK [Flutter](https://flutter.dev/). Le jeu est basé sur le moteur Flame, son fonctionnement est basé sur l'affichage d'images successive afin dans créer des animations et bien entendu gère de multiples actions différentes de l'utilisateur. Ce jeu permet aussi de créer ses propres niveaux/scènes grace à un système de génération par lecture JSON permettant a n'importe qui (ayant lu la documentation bien entendu) de créer son niveaux avec ses assets. C'est finalement comme un moteur de jeu dans un moteur de jeu.
 
-## AnimatedImage
-| nom | type / nom |type | type
-|--|--|--|--
-| filename | String |
-| nbImage | Int |
-| loop | Boolean |
-| size | Vector2 |
-|  | width | Double	|
-|  | height | Double	|
-| framerate | double |
+## APPLICATION ET TECHNOLOGIES
 
-## SpriteComponent
-| nom | type / nom |type | type
-|--|--|--|--
-| sprite | Sprite |
-|  | filename | String
-| |size | Vector2 |
-|  || width | Double	|
-|  || height | Double	|
-| loop | Boolean |
-| position | Vector2 |
-|  | x | Double	|
-|  | y | Double	|
-| anchor | String | -> center...
+Application : Crossplatforme Mobile (Android/IOS)
 
-## MovableImage
-| nom | type / nom |type | type
-|--|--|--|--
-| filename | String |
-|initialCoord | Vector2 |
-|  | xBegin | Double	|
-|  | yBegin | Double	|
-|finalCoord | Vector2 |
-|  | xEnd | Double	|
-|  | yEnd | Double	|
-| size | Vector2 |
-|  | width | Double	|
-|  | height | Double	|
-| anchor | String | -> center...
+Langage(s)/SDK : Flutter (Dart)
 
-## A faire
+Back : N/A
 
- - Composant Flash
- - Composant Camera (activation / desactivation)
- - Son
- - Bouton (image ?)
+Nature du projet : Universitaire
+
+Temps de Dev Prévu : N/A
+
+## AUTEURS
+
+- [Alexis BOIZARD @alexisboizard](https://github.com/alexisboizard)
+- [Alexis BLANC @BlancAlexis](https://github.com/BlancAlexis)
+- [Ewen CERVASI @Ewen-crvs](https://github.com/Ewen-crvs)
+- [Jules CLOSSON @Imperial-CZ](https://github.com/Imperial-CZ)
